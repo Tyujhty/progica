@@ -4,4 +4,32 @@
             max-height: 60px;
         }
     }
+
+    &-profile {
+        &-ctn {
+            border-color: $border-color-light;
+
+            &-img {
+                left: -15px;
+
+                img {
+                    border-color: $border-color-light;
+                }
+            }
+
+            &-id {
+                left: 0px;
+            }
+        }
+
+        &-icon {
+            i {
+                color: $text-blue-dark;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }

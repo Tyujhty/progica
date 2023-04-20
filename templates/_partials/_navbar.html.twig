@@ -1,19 +1,22 @@
 <div class="h-20 flex justify-around navbar">
-    <div class="w-3/12 h-20 flex items-center  justify-center navbar-logo">
+    <div class="w-2/12 h-20 flex items-center  justify-center navbar-logo">
         <img src=" {{asset('/images/logo/logo-progica.png')}} " alt="Logo Progica">
     </div>
-    <div class="w-5/12 flex items-center navbar-slogan">
+    <div class="w-7/12 flex items-center navbar-slogan">
         <p>Échappez à la routine, louez un <span class='font-bold'>gîte</span> de rêve !</p>
     </div>
-    <div class="w-4/12 flex justify-around  items-center navbar-profile">
-        <div class="w-9/12 flex items-center navbar-profile-ctn">
-            <div class="navbar-profile-ctn-img">
-                <img src=" {{asset('/images/users/1.jpg')}} " alt="">
+    <div class="w-3/12 flex justify-around items-center navbar-profile">
+        <div class="w-auto h-14 px-2 py-0 rounded-full border-4 flex items-center navbar-profile-ctn">
+            <div class=" relative navbar-profile-ctn-img">
+                <img src=" {{asset('/images/users/1.jpg')}} " alt="Avatar utilisateur" class="h-16 border-4 rounded-full">
             </div>
-            <a href="" class="btn">Mario Dupond</a>
+            <div class="relative pr-3 navbar-profile-ctn-id">
+                <a href="" class="btn">
+                    <p id="name-id" class="font-bold">Mario Dupond</p>
+                    <p id="type-id" class='text-sm font-semibold'>Propriétaire</p> 
+                </a>                      
+            </div>
         </div>
-        <div class="w-3/12 flex items-center justify-center navbar-profile-icon">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        </div>
+        <i class=" text-2xl fa-solid fa-arrow-right-from-bracket"></i>
     </div>
 </div>

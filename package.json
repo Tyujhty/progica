@@ -15,10 +15,12 @@
     "license": "UNLICENSED",
     "private": true,
     "scripts": {
+        "symfony serve": "symfony serve",
+        "watch": "encore dev --watch",
         "dev-server": "encore dev-server",
         "dev": "encore dev",
-        "watch": "encore dev --watch",
         "build": "encore production --progress"
+        
     },
     "dependencies": {
         "autoprefixer": "^10.4.14",
