@@ -1,0 +1,16 @@
+/** TailwindCss */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/** SASS */
+
+@import './scss/utilities/mixins';
+@import './scss/utilities/variables';
+
+@import './scss/base/reset';
+@import './scss/base/typography';
+
+@import './scss/layout/navbar';
