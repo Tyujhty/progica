@@ -16,19 +16,17 @@
                     border-color: $border-color-light;
                 }
             }
-
-            &-id {
-                left: 0px;
-            }
         }
 
-        &-icon {
-            i {
-                color: $text-blue-dark;
 
-                &:hover {
-                    cursor: pointer;
-                }
+        i {
+            color: $text-blue-dark;
+            transition: $transition-smooth !important;
+
+            &:hover {
+                cursor: pointer;
+                color: $text-blue-light;
+                
             }
         }
     }
