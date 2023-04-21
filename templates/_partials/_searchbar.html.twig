@@ -3,10 +3,11 @@
         <p>Je recherche un gîte</p>
     </div>
     <div class="flex justify-center items-center h-full ml-6 searchbar-ctn">
-        <div class="flex items-center h-3/5 searchbar-ctn-field">
-            <input type="text" name="" class="border-none rounded-l-full searchbar-ctn-field-input">
+        <div class="flex items-center justify-center h-3/5 searchbar-ctn-field">
+            <input type="text" name="" class="w-5/12 border-none rounded-l-full searchbar-ctn-field-input" placeholder="Ville, département, région...">
+            <input type="number" name="" class="w-2/12 mr-4 border-none rounded-r-full searchbar-ctn-field-person" placeholder="Nb d'adultes">
             <div
-                class="relative w-max"
+                class="relative w-2/12 mr-3"
                 data-te-datepicker-init
                 data-te-input-wrapper-init>
                 <input
@@ -19,7 +20,7 @@
                     >Date d'arrivée</label>
              </div>
             <div
-                class="relative w-max"
+                class="relative w-2/12"
                 data-te-datepicker-init
                 data-te-input-wrapper-init>
                 <input
@@ -31,7 +32,7 @@
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >Date de départ</label>
             </div>
-            <input type="number" name="" class="border-none rounded-r-full searchbar-ctn-field-person" placeholder="Nombre d'adultes">
+            
         </div>
     </div>
     <div class="ml-6 searchbar-btn">
