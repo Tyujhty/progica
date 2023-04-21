@@ -8,6 +8,12 @@
 
 /** Titles */
 
+h2 {
+    font-size: 1.2rem;
+    color: $text-blue-dark;
+    font-weight: 600;
+}
+
 /** Components */
 /** Navbar */
 
@@ -26,5 +32,10 @@
 
 /** SearchBar */
 .searchbar-txt p {
+    color: $text-gray;
+}
+
+/** FilterBar */
+.filters-checkbox-clm-items-label {
     color: $text-gray;
 }
