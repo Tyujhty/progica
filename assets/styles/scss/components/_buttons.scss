@@ -1,0 +1,23 @@
+.btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.btn-primary {
+    background-color: $text-blue-dark;
+    color: white;
+    transition: $transition-smooth;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+.btn-secondary {
+    background-color: $bg-color-yellow;
+    color: white;
+    transition: $transition-smooth;
+
+    &:hover {
+        opacity: .7;
+    }
+}

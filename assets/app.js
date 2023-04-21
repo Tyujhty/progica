@@ -11,3 +11,8 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+//Import of Tailwind elements
+import 'tw-elements';
+
+// JS import
+import "./javascripts/datePicker";
