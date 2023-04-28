@@ -15,5 +15,4 @@ import './bootstrap';
 import 'tw-elements';
 
 // JS import
-import "./javascripts/datePicker";
 import "./javascripts/filters";

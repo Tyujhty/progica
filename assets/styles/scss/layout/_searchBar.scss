@@ -1,6 +1,16 @@
 .searchbar {
     background-color: $bg-color-gray-light;
 
+    .searchbar-ctn {
+        &-people {
+            background-color: $text-gray-light;
+        }
+
+        &-date, span {
+            color: $text-gray;
+        }
+    }
+
     .searchbar-ctn-field-person {
         background-color: $text-gray-light;
     }

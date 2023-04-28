@@ -6,20 +6,24 @@
     </div>
     <div class="flex justify-center items-center h-full ml-6 searchbar-ctn">
         {{ form_start(formSearch) }}
-            <div class="flex">
+            <div class="flex items-center">
+                {{ form_row(formSearch.content, {
+                    widget_class: 'rounded-l-3xl w-80 border-none focus:ring-transparent searchbar-ctn-input'
+                })}}
+                {{ form_row(formSearch.people, {
+                    widget_class: 'rounded-r-3xl w-36 border-none focus:ring-transparent mr-4 searchbar-ctn-people'
+                })}}
+                <span class='mr-4'>de </span>
+                {{ form_row(formSearch.start, {
+                    widget_class: 'rounded-lg searchbar-ctn-date'
+                }) }}
+                <span class='mx-4'> à </span>
+                {{ form_row(formSearch.end, {
+                    widget_class: 'rounded-lg mr-4 searchbar-ctn-date'
+                }) }}
                 {{ form_rest(formSearch) }}
             </div>
         {{ form_end(formSearch) }}
     </div>
-    {# <div class="ml-6 searchbar-btn">
-        <button class="font-bold btn btn-primary btn-filter">
-            <i class="fa-solid fa-plus"></i>
-            de filtres
-        </button>
-        <button class="font-bold btn btn-secondary">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            Rechercher
-        </button>
-    </div> #}
 </div>
 

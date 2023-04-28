@@ -17,28 +17,45 @@ class SearchType extends AbstractType
     {
         $builder
             ->add('content', TextType::class, [
-                'label' => false
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Ville, région, département...'
+                ]
+
             ])
             ->add('people', IntegerType::class, [
-                'label' => false
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => "Nb d'adultes",
+                    'min' => 0,
+                    'max' => 100,
+                ]
+
             ])
             ->add('start', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'model_timezone' => 'Europe/Paris',
+                'view_timezone' => 'Europe/Paris',
+                'required' => false,
+                'label' => false
             ])
             ->add('end', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => false,
+                'label' => false
             ])
             ->add('rechercher', SubmitType::class, [
                 'row_attr' => [
-                    'class' => 'font-bold btn btn-secondary'
+                    'class' => 'font-bold btn btn-secondary mr-4'
                 ]
             ])
             ->add('filtres', ButtonType::class, [
                 'row_attr' => [
                     'class' => 'font-bold btn btn-primary btn-filter'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
