@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,9 +21,8 @@ class SearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Ville, région, département...'
+                    'placeholder' => 'Ville, département, région,...'
                 ]
-
             ])
             ->add('people', IntegerType::class, [
                 'label' => false,
@@ -32,7 +32,6 @@ class SearchType extends AbstractType
                     'min' => 0,
                     'max' => 100,
                 ]
-
             ])
             ->add('start', DateType::class, [
                 'widget' => 'single_text',
@@ -46,6 +45,40 @@ class SearchType extends AbstractType
                 'required' => false,
                 'label' => false
             ])
+            ->add('interior', ChoiceType::class, [
+                'choices' => [
+                    'Télévision' => 'tv',
+                    'Lave-vaisselle' => 'laveVaisselle',
+                    'Lave-linge' => 'laveLinge',
+                    'Climatisation' => 'climatisation'
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'label' => false
+            ])
+            ->add('exterior', ChoiceType::class, [
+                'choices' => [
+                    'Terrasse' => 'terrasse',
+                    'Barbecue' => 'barbecue',
+                    'Piscine' => 'piscine',
+                    'Tennis' => 'tennis',
+                    'Ping-pong' => 'pingPong'
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'label' => false
+            ])
+            ->add('services', ChoiceType::class, [
+                'choices' => [
+                    'Location de linge' => 'locLinge',
+                    'Ménage' => 'menage',
+                    'Accès internet' => 'internet',
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'label' => false
+            ])
+
             ->add('rechercher', SubmitType::class, [
                 'row_attr' => [
                     'class' => 'font-bold btn btn-secondary mr-4'
