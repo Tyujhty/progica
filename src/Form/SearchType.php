@@ -4,14 +4,13 @@ namespace App\Form;
 
 use App\Entity\Department;
 use App\Entity\Region;
+use App\Entity\Town;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,14 +23,23 @@ class SearchType extends AbstractType
                 'class' => Region::class,
                 'choice_label' => 'name',
                 'label' => false,
-                'placeholder' => 'Choisir une région'
+                'placeholder' => 'Choisir une région',
+                'required' => false
                 ]
                 )
             ->add('department', EntityType::class, [
                 'class' => Department::class,
                 'choice_label' => 'name',
                 'label' => false,
-                'placeholder'=> 'Choisir un département'
+                'placeholder'=> 'Choisir un département',
+                'required' => false
+            ])
+            ->add('town', EntityType::class, [
+                'class' => Town::class,
+                'choice_label' => 'name',
+                'label' => false,
+                'placeholder'=> 'Choisir une ville',
+                'required' => false
             ])
 
             ->add('start', DateType::class, [
