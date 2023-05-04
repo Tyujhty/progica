@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Region;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -17,22 +19,14 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('content', TextType::class, [
+            ->add('region', EntityType::class, [
+                'class' => Region::class,
+                'choice_label' => 'name',
                 'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Ville, département, région,...'
+                'placeholder' => 'Choisir une région'
                 ]
-            ])
-            ->add('people', IntegerType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => "Nb d'adultes",
-                    'min' => 0,
-                    'max' => 100,
-                ]
-            ])
+                )
+
             ->add('start', DateType::class, [
                 'widget' => 'single_text',
                 'model_timezone' => 'Europe/Paris',
