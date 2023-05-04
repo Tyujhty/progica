@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Department;
 use App\Entity\Region;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -26,6 +27,12 @@ class SearchType extends AbstractType
                 'placeholder' => 'Choisir une région'
                 ]
                 )
+            ->add('department', EntityType::class, [
+                'class' => Department::class,
+                'choice_label' => 'name',
+                'label' => false,
+                'placeholder'=> 'Choisir un département'
+            ])
 
             ->add('start', DateType::class, [
                 'widget' => 'single_text',
