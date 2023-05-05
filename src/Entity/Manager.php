@@ -55,6 +55,10 @@ class Manager
         return $this;
     }
 
+    public function __toString() {
+        return $this->lastName;
+    }
+
     public function getLastName(): ?string
     {
         return $this->lastName;
@@ -66,6 +70,7 @@ class Manager
 
         return $this;
     }
+    
 
     public function getAddress(): ?string
     {

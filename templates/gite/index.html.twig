@@ -6,53 +6,21 @@
 <div class="flex giteShow mt-10">
     
     <div class="w-10/12 mx-3 giteShow-card">
-        <h1 class="text-center text-3xl mb-6 giteShow-card-title">Nom du gite</h1>
+        <h1 class="text-center text-3xl mb-6 giteShow-card-title"> {{ shelter.name }} </h1>
         <div class="container w-4/5 mx-auto py-2 giteShow-card-gallery">
-            <div class="-m-1 flex flex-wrap md:-m-2">
-                <div class="flex w-1/2 flex-wrap">
-                    <div class="w-1/2 p-1 md:p-2">
-                        <img
-                        alt="gallery"
-                        class="block h-full w-full rounded-lg object-cover object-center"
-                        src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp" />
-                    </div>
-                    <div class="w-1/2 p-1 md:p-2">
-                        <img
-                        alt="gallery"
-                        class="block h-full w-full rounded-lg object-cover object-center"
-                        src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(72).webp" />
-                    </div>
-                    <div class="w-full p-1 md:p-2">
-                        <img
-                        alt="gallery"
-                        class="block h-full w-full rounded-lg object-cover object-center"
-                        src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp" />
-                    </div>
-                </div>
-                <div class="flex w-1/2 flex-wrap">
-                    <div class="w-full p-1 md:p-2">
-                        <img
-                        alt="gallery"
-                        class="block h-full w-full rounded-lg object-cover object-center"
-                        src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp" />
-                    </div>
-                    <div class="w-1/2 p-1 md:p-2">
-                        <img
-                        alt="gallery"
-                        class="block h-full w-full rounded-lg object-cover object-center"
-                        src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp" />
-                    </div>
-                    <div class="w-1/2 p-1 md:p-2">
-                        <img
-                        alt="gallery"
-                        class="block h-full w-full rounded-lg object-cover object-center"
-                        src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(77).webp" />
-                    </div>
-                </div>
-            </div>
+            <img src="{{ shelter.image }}" alt="">
         </div>
         <div class="giteShow-card-desc">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus excepturi ipsum quis animi perspiciatis et repellat sunt numquam officia! Sapiente, optio ipsa aspernatur porro harum facere rem nihil rerum ad et dolor voluptatem nesciunt provident quos sed quasi omnis iusto, expedita voluptates pariatur consectetur sequi libero earum. Reiciendis assumenda repellendus excepturi vitae, sunt id debitis facilis voluptatibus inventore est asperiores ab tenetur quisquam molestiae obcaecati voluptatem earum libero numquam. Ipsum pariatur illum laudantium repellat esse facilis! Laborum aperiam iure asperiores illo error obcaecati necessitatibus voluptatum rem! Quibusdam nostrum atque sed dolores perferendis, optio odit eos numquam? Repudiandae dolorem sunt distinctio iure possimus velit mollitia, at harum hic dolore dicta dolores molestias, asperiores nam blanditiis minima tempore iste ex tenetur molestiae ad pariatur sint cum. Itaque necessitatibus reiciendis dolores quo voluptatem non repellendus quia facere iure? Adipisci ratione assumenda sequi iure incidunt odio eum porro totam neque, placeat exercitationem tenetur in sed ipsam, eius corporis. Ut harum assumenda sapiente dolorem adipisci architecto omnis autem tempore sint perspiciatis ratione incidunt dolorum iure facilis, cupiditate magni culpa, aliquam sequi eos tempora velit temporibus nisi impedit? Ipsum quibusdam non deleniti totam deserunt, reprehenderit, possimus recusandae, voluptatum ipsam omnis eligendi necessitatibus iure tempora laboriosam suscipit.</p>
+            <p>{{ shelter.surface}} m²</p>
+            <p>nombre de chambres{{ shelter.nbBedrooms}}</p>
+            <p>nombre de couchages{{ shelter.nbBeds}}</p>
+            <p>Les animaux {{ shelter.acceptAnimals }}</p>
+            <p>Les animaux prix {{ shelter.priceAnimals }}</p>
+
+            <p>Prix de la nuit {{ shelter.price }}</p>
+            {# <p>Prix de la nuit {{ shelter.owner }}</p> #}
+            <p>Prix de la nuit {{ shelter.manager }}</p>
+            <p>Prix de la nuit {{ shelter.town }}</p>
         </div>
         <div class="giteShow-card-services">
             <ul>

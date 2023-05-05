@@ -73,6 +73,9 @@ class Price
 
         return $this;
     }
+    public function __toString() {
+        return $this->price;
+    }
 
     /**
      * @return Collection<int, Shelter>
@@ -103,4 +106,6 @@ class Price
 
         return $this;
     }
+
+
 }
