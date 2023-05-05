@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OwnerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OwnerRepository::class)]
@@ -27,6 +29,14 @@ class Owner
 
     #[ORM\Column(length: 150)]
     private ?string $mail = null;
+
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Shelter::class)]
+    private Collection $shelters;
+
+    public function __construct()
+    {
+        $this->shelters = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,36 @@ class Owner
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Shelter>
+     */
+    public function getShelters(): Collection
+    {
+        return $this->shelters;
+    }
+
+    public function addShelter(Shelter $shelter): self
+    {
+        if (!$this->shelters->contains($shelter)) {
+            $this->shelters->add($shelter);
+            $shelter->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShelter(Shelter $shelter): self
+    {
+        if ($this->shelters->removeElement($shelter)) {
+            // set the owning side to null (unless already changed)
+            if ($shelter->getOwner() === $this) {
+                $shelter->setOwner(null);
+            }
+        }
 
         return $this;
     }

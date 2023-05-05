@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PriceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,14 @@ class Price
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2)]
     private ?string $price = null;
+
+    #[ORM\OneToMany(mappedBy: 'price', targetEntity: Shelter::class)]
+    private Collection $shelters;
+
+    public function __construct()
+    {
+        $this->shelters = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,36 @@ class Price
     public function setPrice(string $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Shelter>
+     */
+    public function getShelters(): Collection
+    {
+        return $this->shelters;
+    }
+
+    public function addShelter(Shelter $shelter): self
+    {
+        if (!$this->shelters->contains($shelter)) {
+            $this->shelters->add($shelter);
+            $shelter->setPrice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShelter(Shelter $shelter): self
+    {
+        if ($this->shelters->removeElement($shelter)) {
+            // set the owning side to null (unless already changed)
+            if ($shelter->getPrice() === $this) {
+                $shelter->setPrice(null);
+            }
+        }
 
         return $this;
     }
