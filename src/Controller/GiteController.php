@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GiteController extends AbstractController
 {
-    #[Route('/gite/{id}', name: 'gite')]
+    #[Route('/gite/{id}', name: 'gite_show')]
     public function giteCard(Request $request, Shelter $shelter): Response
     {
 
