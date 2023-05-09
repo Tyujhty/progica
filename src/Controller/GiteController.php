@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Shelter;
 use App\Form\SearchType;
+use App\Repository\ShelterRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,14 +14,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class GiteController extends AbstractController
 {
     #[Route('/gite/{id}', name: 'gite_show')]
-    public function giteCard(Request $request, Shelter $shelter): Response
+    public function giteCard(Request $request, Shelter $shelter, EntityManagerInterface $em, int $id ): Response
     {
+        $shelter = $em->getRepository(Shelter::class)->find($id);
 
+        
         $formSearch = $this->createForm((SearchType::class));
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-
         };
 
         return $this->render('gite/index.html.twig', [

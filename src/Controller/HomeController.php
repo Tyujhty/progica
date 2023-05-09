@@ -20,6 +20,10 @@ class HomeController extends AbstractController
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+            $criteria = $formSearch->getData();
+            // dd($criteria);
+            $shelters = $shelterRepository->searchShelterFromTown($criteria);
+            dd($shelters);
 
         }
 

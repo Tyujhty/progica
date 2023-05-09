@@ -43,17 +43,16 @@ class ShelterRepository extends ServiceEntityRepository
 //    /**
 //     * @return Shelter[] Returns an array of Shelter objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function searchShelterFromTown($criteria): array
+   {
+       return $this->createQueryBuilder('s')      
+           ->Where('s.town = :town_id')
+           ->setParameter('town_id', $criteria['town']->getId())
+           ->setMaxResults(30)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Shelter
 //    {
