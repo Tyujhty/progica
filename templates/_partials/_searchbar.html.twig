@@ -7,9 +7,6 @@
     <div class="flex justify-center items-center h-full ml-6 searchbar-ctn">
         {{ form_start(formSearch) }}
             <div class="flex items-center">
-                {# {{ form_row(formSearch.content, {
-                    widget_class: 'rounded-l-3xl w-80 border-none focus:ring-transparent searchbar-ctn-input'
-                })}} #}
                 {{ form_row(formSearch.region, {
                     widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4'
                 })}}
@@ -28,9 +25,10 @@
                 {{ form_row(formSearch.end, {
                     widget_class: 'rounded-lg mr-4 searchbar-ctn-date'
                 }) }}
+
+                <button type="submit" class="font-bold btn btn-secondary mr-4">Rechercher</button>
+                <button class="font-bold btn btn-primary btn-filter">+ de filtres</button>
                 
-                {{ form_row(formSearch.rechercher) }}
-                {{ form_row(formSearch.filtres) }}
             </div>
     </div>
 </div>

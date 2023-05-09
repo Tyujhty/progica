@@ -14,15 +14,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class GiteController extends AbstractController
 {
     #[Route('/gite/{id}', name: 'gite_show')]
-    public function giteCard(Request $request, Shelter $shelter, EntityManagerInterface $em, int $id ): Response
+    public function giteCard(Request $request, Shelter $shelter, EntityManagerInterface $em, int $id, ShelterRepository $shelterRepository): Response
     {
         $shelter = $em->getRepository(Shelter::class)->find($id);
 
-        
         $formSearch = $this->createForm((SearchType::class));
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+            $criteria = $formSearch->getData();
+            // dd($criteria);
+            $shelters = $shelterRepository->searchShelterFromTown($criteria);
+
+            // dd($shelters);
+            return $this->redirectToRoute('home', $shelters);
         };
 
         return $this->render('gite/index.html.twig', [

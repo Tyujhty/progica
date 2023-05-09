@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Shelter;
+use App\Form\SearchType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -53,6 +54,24 @@ class ShelterRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+   #
+//    public function findSearch(SearchType $search)
+//    {
+//         $query = $this
+//             ->createQueryBuilder('s')
+//             ->select('s', 't')
+//             ->join('s.town', 's');
+
+//             if(!empty($search->q)) {
+//                 $query = $query
+//                     ->andWhere('s.town LIKE :q')
+//                     ->setParameter('q', "%{$search->q}%");
+//             }
+
+             
+
+//         return $query->getQuery()->getResult();
+//    }
 
 //    public function findOneBySomeField($value): ?Shelter
 //    {

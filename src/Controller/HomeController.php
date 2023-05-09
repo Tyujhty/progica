@@ -19,18 +19,20 @@ class HomeController extends AbstractController
         $formSearch = $this->createForm((SearchType::class));
         $formSearch->handleRequest($request);
 
+        
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
             $criteria = $formSearch->getData();
-            // dd($criteria);
             $shelters = $shelterRepository->searchShelterFromTown($criteria);
             dd($shelters);
-
         }
-
+        
         $shelters = $shelterRepository->findAll();
 
+        if($request->get('ajax')) {
+            
+        }
+
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'formSearch' => $formSearch->createView(),
             'shelters' => $shelters
         ]);

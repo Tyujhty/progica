@@ -13,4 +13,31 @@ btnFilter.addEventListener('click', (event) => {
         ctnFilters.classList.remove("flex");
         ctnFilters.classList.add("hidden");
     }
-} )
+})
+
+window.onload = () => {
+    const searchForm = document.querySelector('#searchForm');
+    const searchFormSelect = document.querySelectorAll("#searchForm select");
+
+    searchFormSelect.forEach(select => {
+        select.addEventListener('change', () => {
+
+            const Form = new FormData(searchForm)
+
+            const Params = new URLSearchParams()
+            Form.forEach((value, key) => {
+                Params.append(key, value)
+            })
+
+            const Url = new URL(window.location.href)
+            
+            fetch(Url.pathname + '?' + Params.toString() + "&ajax=1", {
+                headers: {
+                    "x-Requested-with": "XMLHttpRequest"
+                }
+            }).then(response => {
+                console.log(response)
+            }).catch(e => alert(e))
+        }) 
+    })
+}
