@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Form\SearchType;
 use App\Repository\ShelterRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,19 +19,24 @@ class HomeController extends AbstractController
 
         $formSearch = $this->createForm((SearchType::class));
         $formSearch->handleRequest($request);
-
         
-        if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-            $criteria = $formSearch->getData();
+        $criteria = $formSearch->getData();
+        if($criteria) {
             $shelters = $shelterRepository->searchShelterFromTown($criteria);
+        } else {
+            
+            $shelters = $shelterRepository->findAll();
         }
-        
-        $shelters = $shelterRepository->findAll();
-
+            
         if($request->get('ajax')) {
             
+            return new JsonResponse([
+                'content'=> $this->renderView('_partials/_content.html.twig', [
+                    'shelters' => $shelters
+                ])
+            ]);
         }
-
+        
         return $this->render('home/index.html.twig', [
             'formSearch' => $formSearch->createView(),
             'shelters' => $shelters

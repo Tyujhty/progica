@@ -35,9 +35,13 @@ window.onload = () => {
                 headers: {
                     "x-Requested-with": "XMLHttpRequest"
                 }
-            }).then(response => {
-                console.log(response)
-            }).catch(e => alert(e))
+            }).then(response => 
+                response.json()
+            ).then(data => {
+                const content = document.querySelector('#content')
+                content.innerHTML = data.content;
+        })
+            .catch(e => alert(e))
         }) 
     })
 }

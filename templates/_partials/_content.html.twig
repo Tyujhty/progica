@@ -1,0 +1,8 @@
+{% for shelter in shelters %}
+    <div class="ctn w-4/12 flex flex-rown">
+        <a href=" {{path('gite_show', {'id' : shelter.id} )}} ">
+            <h3> {{ shelter.name }} </h3>
+        </a>
+        <h2> {{ shelter.town }} </h2>
+    </div>
+{% endfor %}
