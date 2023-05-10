@@ -17,7 +17,7 @@ btnFilter.addEventListener('click', (event) => {
 
 window.onload = () => {
     const searchForm = document.querySelector('#searchForm');
-    const searchFormSelect = document.querySelectorAll("#searchForm select");
+    const searchFormSelect = document.querySelectorAll(".criteria");
 
     searchFormSelect.forEach(select => {
         select.addEventListener('change', () => {

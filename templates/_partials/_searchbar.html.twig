@@ -8,22 +8,22 @@
         {{ form_start(formSearch) }}
             <div class="flex items-center">
                 {{ form_row(formSearch.region, {
-                    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4'
+                    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
                 })}}
                 {{ form_row(formSearch.department, {
-                    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4'
+                    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
                 })}}
                 {{ form_row(formSearch.town, {
-                    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4'
+                    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
                 })}}
                 
                 <span class='mr-4'>de </span>
                 {{ form_row(formSearch.start, {
-                    widget_class: 'rounded-lg searchbar-ctn-date'
+                    widget_class: 'rounded-lg searchbar-ctn-date criteria'
                 }) }}
                 <span class='mx-4'> à </span>
                 {{ form_row(formSearch.end, {
-                    widget_class: 'rounded-lg mr-4 searchbar-ctn-date'
+                    widget_class: 'rounded-lg mr-4 searchbar-ctn-date criteria'
                 }) }}
 
                 {# <button type="submit" class="font-bold btn btn-secondary mr-4">Rechercher</button> #}
