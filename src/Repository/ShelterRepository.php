@@ -44,34 +44,29 @@ class ShelterRepository extends ServiceEntityRepository
 //    /**
 //     * @return Shelter[] Returns an array of Shelter objects
 //     */
-   public function searchShelterFromTown($criteria): array
-   {
-       return $this->createQueryBuilder('s')      
-           ->Where('s.town = :town_id')
-           ->setParameter('town_id', $criteria['town']->getId())
-           ->setMaxResults(30)
-           ->getQuery()
-           ->getResult()
-       ;
-   }
-   #
-//    public function findSearch(SearchType $search)
-//    {
-//         $query = $this
-//             ->createQueryBuilder('s')
-//             ->select('s', 't')
-//             ->join('s.town', 's');
 
-//             if(!empty($search->q)) {
-//                 $query = $query
-//                     ->andWhere('s.town LIKE :q')
-//                     ->setParameter('q', "%{$search->q}%");
-//             }
+public function searchShelterFromTown($criteria): array
+{
+    $query = $this->createQueryBuilder('s')
+        ->leftJoin('s.town', 's_town') // Jointure avec la table "town"
+        ->leftJoin('s_town.department', 's_department') // Jointure avec la table "department" via la table "town"
+        ->leftJoin('s_department.region', 's_region') // Jointure avec la table "region" via la table "department"
+        ->where('s_town IS NULL')
+        ->orWhere('s_town = :town_id')
+        ->setParameter('town_id', $criteria['town'] ? $criteria['town']->getId() : null)
+        ->orWhere('s_department IS NULL')
+        ->orWhere('s_department = :department_id')
+        ->setParameter('department_id', $criteria['department'] ? $criteria['department']->getId() : null)
+        ->orWhere('s_region IS NULL')
+        ->orWhere('s_region = :region_id')
+        ->setParameter('region_id', $criteria['region'] ? $criteria['region']->getId() : null);
 
-             
+    return $query
+        ->setMaxResults(30)
+        ->getQuery()
+        ->getResult();
+}
 
-//         return $query->getQuery()->getResult();
-//    }
 
 //    public function findOneBySomeField($value): ?Shelter
 //    {
