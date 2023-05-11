@@ -22,11 +22,20 @@
             <p>Prix de la nuit {{ shelter.manager }}</p>
             <p>Prix de la nuit {{ shelter.town }}</p>
 
-            {% if interiorEquipmentNames %}
+            {% if interiorEquipments is not empty %}
                 <h2>Intérieur</h2>
-                {% for interiorEquipmentName in interiorEquipmentNames %}
-                    <p>{{ interiorEquipmentName }}</p>
-                {% endfor %}                
+                {% for interiorEquipment in interiorEquipments %}
+                    <p>{{ interiorEquipment.name }}</p>
+                    <p>{{ interiorEquipment.description }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% if exteriorEquipments is not empty %}
+                <h2>Exterieur</h2>
+                {% for exteriorEquipment in exteriorEquipments %}
+                    <p>{{ exteriorEquipment.name }}</p>
+                    <p>{{ exteriorEquipment.description }}</p>
+                {% endfor %}
             {% endif %}
 
         </div>
