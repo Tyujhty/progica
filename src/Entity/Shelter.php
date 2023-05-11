@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ShelterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -50,6 +52,14 @@ class Shelter
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\ManyToMany(targetEntity: InteriorEquipment::class, mappedBy: 'price')]
+    private Collection $interiorEquipment;
+
+    public function __construct()
+    {
+        $this->interiorEquipment = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -184,6 +194,33 @@ class Shelter
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InteriorEquipment>
+     */
+    public function getInteriorEquipment(): Collection
+    {
+        return $this->interiorEquipment;
+    }
+
+    public function addInteriorEquipment(InteriorEquipment $interiorEquipment): self
+    {
+        if (!$this->interiorEquipment->contains($interiorEquipment)) {
+            $this->interiorEquipment->add($interiorEquipment);
+            $interiorEquipment->addPrice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInteriorEquipment(InteriorEquipment $interiorEquipment): self
+    {
+        if ($this->interiorEquipment->removeElement($interiorEquipment)) {
+            $interiorEquipment->removePrice($this);
+        }
 
         return $this;
     }

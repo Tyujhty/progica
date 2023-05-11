@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Department;
+use App\Entity\InteriorEquipment;
 use App\Entity\Region;
 use App\Entity\Shelter;
 use App\Entity\Town;
@@ -51,22 +52,22 @@ class SearchType extends AbstractType
                 'required' => false,
                 'label' => false
             ])
+            
             ->add('end', DateType::class, [
                 'widget' => 'single_text',
                 'required' => false,
                 'label' => false
             ])
-            ->add('interior', ChoiceType::class, [
-                'choices' => [
-                    'Télévision' => 'tv',
-                    'Lave-vaisselle' => 'laveVaisselle',
-                    'Lave-linge' => 'laveLinge',
-                    'Climatisation' => 'climatisation'
-                ],
+
+            ->add('interior', EntityType::class, [
+                'class' => InteriorEquipment::class,
+                'choice_label' => 'name',
+                'label' => false,
                 'multiple' => true,
-                'expanded' => true,
-                'label' => false
+                'expanded' => false,
+                'required' => false
             ])
+
             ->add('exterior', ChoiceType::class, [
                 'choices' => [
                     'Terrasse' => 'terrasse',

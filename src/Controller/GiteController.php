@@ -26,13 +26,21 @@ class GiteController extends AbstractController
             // dd($criteria);
             $shelters = $shelterRepository->searchShelterFromTown($criteria);
 
-            // dd($shelters);
             return $this->redirectToRoute('home', $shelters);
         };
 
+        $interiorEquipments = $shelter->getInteriorEquipment();
+        $interiorEquipmentNames = []; 
+
+        foreach($interiorEquipments as $interiorEquipment) {
+            $interiorEquipmentNames[] = $interiorEquipment->getName();
+           
+        }
+
         return $this->render('gite/index.html.twig', [
             'formSearch' => $formSearch->createView(),
-            'shelter' => $shelter
+            'shelter' => $shelter,
+            'interiorEquipmentNames' => $interiorEquipmentNames
         ]);
     }
 }

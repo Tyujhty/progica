@@ -21,16 +21,17 @@
             {# <p>Prix de la nuit {{ shelter.owner }}</p> #}
             <p>Prix de la nuit {{ shelter.manager }}</p>
             <p>Prix de la nuit {{ shelter.town }}</p>
+
+            {% if interiorEquipmentNames %}
+                <h2>Intérieur</h2>
+                {% for interiorEquipmentName in interiorEquipmentNames %}
+                    <p>{{ interiorEquipmentName }}</p>
+                {% endfor %}                
+            {% endif %}
+
         </div>
         <div class="giteShow-card-services">
             <ul>
-                <li>Services</li>
-                <li>Services</li>
-                <li>Services</li>
-                <li>Services</li>
-                <li>Services</li>
-                <li>Services</li>
-                <li>Services</li>
             </ul>
         </div>
         <div class="giteShow-card-calendar">
