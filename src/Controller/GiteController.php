@@ -31,13 +31,15 @@ class GiteController extends AbstractController
         
         $interiorEquipments = $shelter->getInteriorEquipment();
         $exteriorEquipments = $shelter->getExteriorEquipment();
+        $services = $shelter->getServices();
 
 
         return $this->render('gite/index.html.twig', [
             'formSearch' => $formSearch->createView(),
             'shelter' => $shelter,
             'interiorEquipments' => $interiorEquipments,
-            'exteriorEquipments' => $exteriorEquipments 
+            'exteriorEquipments' => $exteriorEquipments,
+            'services' => $services
         ]);
     }
 }

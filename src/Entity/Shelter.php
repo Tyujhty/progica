@@ -59,10 +59,14 @@ class Shelter
     #[ORM\ManyToMany(targetEntity: ExteriorEquipment::class, mappedBy: 'price')]
     private Collection $exteriorEquipment;
 
+    #[ORM\ManyToMany(targetEntity: Service::class, mappedBy: 'price')]
+    private Collection $services;
+
     public function __construct()
     {
         $this->interiorEquipment = new ArrayCollection();
         $this->exteriorEquipment = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -251,6 +255,33 @@ class Shelter
     {
         if ($this->exteriorEquipment->removeElement($exteriorEquipment)) {
             $exteriorEquipment->removePrice($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Service>
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function addService(Service $service): self
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+            $service->addPrice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): self
+    {
+        if ($this->services->removeElement($service)) {
+            $service->removePrice($this);
         }
 
         return $this;

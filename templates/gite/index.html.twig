@@ -14,13 +14,16 @@
             <p>{{ shelter.surface}} m²</p>
             <p>nombre de chambres{{ shelter.nbBedrooms}}</p>
             <p>nombre de couchages{{ shelter.nbBeds}}</p>
-            <p>Les animaux {{ shelter.acceptAnimals }}</p>
-            <p>Les animaux prix {{ shelter.priceAnimals }}</p>
 
+            {% if shelter.acceptAnimals == 1 %}
+                Animaux acceptés
+                <p>Les animaux prix {{ shelter.priceAnimals }}</p>
+            {% endif %}
+            
             <p>Prix de la nuit {{ shelter.price }}</p>
-            {# <p>Prix de la nuit {{ shelter.owner }}</p> #}
-            <p>Prix de la nuit {{ shelter.manager }}</p>
-            <p>Prix de la nuit {{ shelter.town }}</p>
+            <p>Propriétaire {{ shelter.owner.lastname }} {{shelter.owner.firstname}}</p>
+            <p>Manager {{ shelter.manager.lastname }} {{ shelter.manager.firstname }}</p>
+            <p>Ville {{ shelter.town }}</p>
 
             {% if interiorEquipments is not empty %}
                 <h2>Intérieur</h2>
@@ -35,6 +38,13 @@
                 {% for exteriorEquipment in exteriorEquipments %}
                     <p>{{ exteriorEquipment.name }}</p>
                     <p>{{ exteriorEquipment.description }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% if services is not empty %}
+                <h2>Services</h2>
+                {% for service in services %}
+                    <p>{{ service.name }}</p>
                 {% endfor %}
             {% endif %}
 
