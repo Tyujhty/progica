@@ -21,7 +21,7 @@ class HomeController extends AbstractController
         $formSearch->handleRequest($request);
 
         $criteria = $formSearch->getData();
-        if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'])) {
+        if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'] || (isset($criteria['interior']) && !$criteria['interior']->isEmpty()) || (isset($criteria['exterior']) && !$criteria['exterior']->isEmpty()) || (isset($criteria['services']) && !$criteria['services']->isEmpty()))) {
             $shelters = $shelterRepository->searchSheltersByCriteria($criteria);
         } else {
             $shelters = $shelterRepository->findAll();

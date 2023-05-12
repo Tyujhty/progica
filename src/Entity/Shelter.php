@@ -53,13 +53,13 @@ class Shelter
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\ManyToMany(targetEntity: InteriorEquipment::class, mappedBy: 'price')]
+    #[ORM\ManyToMany(targetEntity: InteriorEquipment::class, mappedBy: 'equipment')]
     private Collection $interiorEquipment;
 
-    #[ORM\ManyToMany(targetEntity: ExteriorEquipment::class, mappedBy: 'price')]
+    #[ORM\ManyToMany(targetEntity: ExteriorEquipment::class, mappedBy: 'equipment')]
     private Collection $exteriorEquipment;
 
-    #[ORM\ManyToMany(targetEntity: Service::class, mappedBy: 'price')]
+    #[ORM\ManyToMany(targetEntity: Service::class, mappedBy: 'service')]
     private Collection $services;
 
     public function __construct()
@@ -218,7 +218,7 @@ class Shelter
     {
         if (!$this->interiorEquipment->contains($interiorEquipment)) {
             $this->interiorEquipment->add($interiorEquipment);
-            $interiorEquipment->addPrice($this);
+            $interiorEquipment->addEquipment($this);
         }
 
         return $this;
@@ -227,7 +227,7 @@ class Shelter
     public function removeInteriorEquipment(InteriorEquipment $interiorEquipment): self
     {
         if ($this->interiorEquipment->removeElement($interiorEquipment)) {
-            $interiorEquipment->removePrice($this);
+            $interiorEquipment->removeEquipment($this);
         }
 
         return $this;
@@ -245,7 +245,7 @@ class Shelter
     {
         if (!$this->exteriorEquipment->contains($exteriorEquipment)) {
             $this->exteriorEquipment->add($exteriorEquipment);
-            $exteriorEquipment->addPrice($this);
+            $exteriorEquipment->addEquipment($this);
         }
 
         return $this;
@@ -254,7 +254,7 @@ class Shelter
     public function removeExteriorEquipment(ExteriorEquipment $exteriorEquipment): self
     {
         if ($this->exteriorEquipment->removeElement($exteriorEquipment)) {
-            $exteriorEquipment->removePrice($this);
+            $exteriorEquipment->removeEquipment($this);
         }
 
         return $this;
@@ -272,7 +272,7 @@ class Shelter
     {
         if (!$this->services->contains($service)) {
             $this->services->add($service);
-            $service->addPrice($this);
+            $service->addService($this);
         }
 
         return $this;
@@ -281,7 +281,7 @@ class Shelter
     public function removeService(Service $service): self
     {
         if ($this->services->removeElement($service)) {
-            $service->removePrice($this);
+            $service->removeService($this);
         }
 
         return $this;

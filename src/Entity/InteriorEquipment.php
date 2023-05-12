@@ -23,11 +23,11 @@ class InteriorEquipment
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Shelter::class, inversedBy: 'interiorEquipment')]
-    private Collection $price;
+    private Collection $equipment;
 
     public function __construct()
     {
-        $this->price = new ArrayCollection();
+        $this->equipment = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,23 +62,23 @@ class InteriorEquipment
     /**
      * @return Collection<int, Shelter>
      */
-    public function getPrice(): Collection
+    public function getEquipment(): Collection
     {
-        return $this->price;
+        return $this->equipment;
     }
 
-    public function addPrice(Shelter $price): self
+    public function addEquipment(Shelter $equipment): self
     {
-        if (!$this->price->contains($price)) {
-            $this->price->add($price);
+        if (!$this->equipment->contains($equipment)) {
+            $this->equipment->add($equipment);
         }
 
         return $this;
     }
 
-    public function removePrice(Shelter $price): self
+    public function removeEquipment(Shelter $equipment): self
     {
-        $this->price->removeElement($price);
+        $this->equipment->removeElement($equipment);
 
         return $this;
     }

@@ -19,11 +19,11 @@ class Service
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Shelter::class, inversedBy: 'services')]
-    private Collection $price;
+    private Collection $service;
 
     public function __construct()
     {
-        $this->price = new ArrayCollection();
+        $this->service = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,23 +46,23 @@ class Service
     /**
      * @return Collection<int, Shelter>
      */
-    public function getPrice(): Collection
+    public function getService(): Collection
     {
-        return $this->price;
+        return $this->service;
     }
 
-    public function addPrice(Shelter $price): self
+    public function addService(Shelter $service): self
     {
-        if (!$this->price->contains($price)) {
-            $this->price->add($price);
+        if (!$this->service->contains($service)) {
+            $this->service->add($service);
         }
 
         return $this;
     }
 
-    public function removePrice(Shelter $price): self
+    public function removeService(Shelter $service): self
     {
-        $this->price->removeElement($price);
+        $this->service->removeElement($service);
 
         return $this;
     }
