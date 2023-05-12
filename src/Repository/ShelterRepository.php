@@ -45,7 +45,7 @@ class ShelterRepository extends ServiceEntityRepository
 //     * @return Shelter[] Returns an array of Shelter objects
 //     */
 
-public function searchShelterFromTown($criteria): array
+public function searchSheltersByCriteria($criteria): array
 {
     $query = $this->createQueryBuilder('s')
         ->leftJoin('s.town', 's_town') // Jointure avec la table "town"
@@ -66,8 +66,6 @@ public function searchShelterFromTown($criteria): array
         ->getQuery()
         ->getResult();
 }
-
-
 //    public function findOneBySomeField($value): ?Shelter
 //    {
 //        return $this->createQueryBuilder('s')

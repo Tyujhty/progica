@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Form\SearchType;
+use App\Repository\InteriorEquipmentRepository;
 use App\Repository\ShelterRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ class HomeController extends AbstractController
 
         $criteria = $formSearch->getData();
         if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'])) {
-            $shelters = $shelterRepository->searchShelterFromTown($criteria);
+            $shelters = $shelterRepository->searchSheltersByCriteria($criteria);
         } else {
             $shelters = $shelterRepository->findAll();
         }

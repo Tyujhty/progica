@@ -20,9 +20,7 @@
                 <p>Les animaux prix {{ shelter.priceAnimals }}</p>
             {% endif %}
             
-            <p>Prix de la nuit {{ shelter.price }}</p>
-            <p>Propriétaire {{ shelter.owner.lastname }} {{shelter.owner.firstname}}</p>
-            <p>Manager {{ shelter.manager.lastname }} {{ shelter.manager.firstname }}</p>
+            
             <p>Ville {{ shelter.town }}</p>
 
             {% if interiorEquipments is not empty %}
@@ -62,13 +60,17 @@
         <div class="fixed w-48 h-52 giteShow-contact-card">
             <div class="giteShow-contact-card-prices">
                 <h2>Périodes</h2>
-                <h3>Hiver</h3>
-                <p>200€ / nuits</p>
+                <p> {{shelter.price.beginning.format('d-m-Y')}} </p>
+                <p> {{shelter.price.end.format('d-m-Y')}} </p>
+                <p>{{ shelter.price }} / nuit </p>
             </div>
             <div class="giteShow-contact-card-owner">
                 <h2>Nom du propriétaire</h2>
+                <p>{{ shelter.owner.lastname }} {{shelter.owner.firstname}}</p>
+                <h2>Contact</h2>
+                <p>{{ shelter.manager.lastname }} {{ shelter.manager.firstname }}</p>
                 <p>Horaires de contact</p>
-                <button class="btn btn-secondary">Contacter</button>
+                <a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Contacter</a>
             </div>
         </div>
     </div>
