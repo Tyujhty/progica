@@ -1,3 +1,7 @@
+{% if countShelters is defined %}
+    <p>Nombreux de gîtes : {{ countShelters }}</p>
+{% endif %}
+
 {% for shelter in shelters %}
     <div class="ctn w-4/12 flex flex-rown">
         <a href=" {{path('gite_show', {'id' : shelter.id} )}} ">

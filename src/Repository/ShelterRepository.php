@@ -126,11 +126,14 @@ public function searchSheltersByCriteria($criteria): array
         $andConditions[] = $query->expr()->eq('s_region.id', $criteria['region']->getId());
     }
 
+    // Vérifie si le critère "interior" est défini et s'il contient des éléments
     if (isset($criteria['interior']) && $criteria['interior']->count() > 0) {
+         // Récupère les identifiants des équipements intérieurs pour le filtrage
         $interiorIds = $criteria['interior']->map(function ($interior) {
             return $interior->getId();
         })->toArray();
-    
+        
+        //Ajoute une condition pour filtrer les équipements intérieurs par identifiants en utilisant l'opérateur logique "IN".
         $andConditions[] = $query->expr()->in('ie.id', $interiorIds);
     }
     

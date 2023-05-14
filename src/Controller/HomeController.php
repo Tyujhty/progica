@@ -16,13 +16,20 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function index(Request $request, ShelterRepository $shelterRepository): Response
-    {
+    {   
+
         $formSearch = $this->createForm(SearchType::class);
         $formSearch->handleRequest($request);
 
         $criteria = $formSearch->getData();
+        $countShelters = 0;
+
         if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'] || (isset($criteria['interior']) && !$criteria['interior']->isEmpty()) || (isset($criteria['exterior']) && !$criteria['exterior']->isEmpty()) || (isset($criteria['services']) && !$criteria['services']->isEmpty()))) {
+
             $shelters = $shelterRepository->searchSheltersByCriteria($criteria);
+            if($shelters) {
+                $countShelters = count($shelters);
+            }
         } else {
             $shelters = $shelterRepository->findAll();
         }
@@ -30,7 +37,8 @@ class HomeController extends AbstractController
         if ($request->get('ajax')) {
             return new JsonResponse([
                 'content' => $this->renderView('_partials/_content.html.twig', [
-                    'shelters' => $shelters
+                    'shelters' => $shelters,
+                    'countShelters' => $countShelters
                 ])
             ]);
         }
