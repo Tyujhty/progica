@@ -1,7 +1,9 @@
 <div class="flex flex-wrap w-full">
 
-    {% if countShelters is defined %}
-        <p>Nombreux de gîtes : {{ countShelters }}</p>
+    {% if countShelters is defined %} 
+        <div class="w-full h-8 flex items-center pl-4 ">
+            <p class=' text-lg'>Nous avons trouvé : {{ countShelters }} {% if countShelters > 0 %} à {% endif %} {{criteriaTown}}</p>
+        </div>
     {% endif %}
 
     <div class="w-full flex flex-wrap">
@@ -9,6 +11,4 @@
             {% include "_partials/_shelter_card.html.twig" %}
         {% endfor %}
     </div>
-
-
 </div>

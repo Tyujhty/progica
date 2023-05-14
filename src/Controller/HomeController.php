@@ -23,12 +23,14 @@ class HomeController extends AbstractController
 
         $criteria = $formSearch->getData();
         $countShelters = 0;
+        $criteriaInput = '';
 
         if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'] || (isset($criteria['interior']) && !$criteria['interior']->isEmpty()) || (isset($criteria['exterior']) && !$criteria['exterior']->isEmpty()) || (isset($criteria['services']) && !$criteria['services']->isEmpty()))) {
 
             $shelters = $shelterRepository->searchSheltersByCriteria($criteria);
             if($shelters) {
                 $countShelters = count($shelters);
+                $criteriaInput = $criteria['town']; 
             }
         } else {
             $shelters = $shelterRepository->findAll();
@@ -38,7 +40,8 @@ class HomeController extends AbstractController
             return new JsonResponse([
                 'content' => $this->renderView('_partials/_content.html.twig', [
                     'shelters' => $shelters,
-                    'countShelters' => $countShelters
+                    'countShelters' => $countShelters,
+                    'criteriaTown' => $criteriaInput
                 ])
             ]);
         }
