@@ -1,12 +1,14 @@
-{% if countShelters is defined %}
-    <p>Nombreux de gîtes : {{ countShelters }}</p>
-{% endif %}
+<div class="flex flex-wrap w-full">
 
-{% for shelter in shelters %}
-    <div class="ctn w-4/12 flex flex-rown">
-        <a href=" {{path('gite_show', {'id' : shelter.id} )}} ">
-            <h3> {{ shelter.name }} </h3>
-        </a>
-        <h2> {{ shelter.town }} </h2>
+    {% if countShelters is defined %}
+        <p>Nombreux de gîtes : {{ countShelters }}</p>
+    {% endif %}
+
+    <div class="w-full flex flex-wrap">
+        {% for shelter in shelters %}
+            {% include "_partials/_shelter_card.html.twig" %}
+        {% endfor %}
     </div>
-{% endfor %}
+
+
+</div>

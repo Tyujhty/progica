@@ -16,6 +16,12 @@
                 {{ form_row(formSearch.town, {
                     widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
                 })}}
+
+                {% if app.request.attributes.get('_route') == 'gite_show' %}
+                    <button type="submit" class="font-bold btn btn-secondary mr-4">Rechercher</button>
+                {% endif %}
+                                
+                
 {#                 
                 <span class='mr-4'>de </span>
                 {{ form_row(formSearch.start, {
@@ -25,8 +31,6 @@
                 {{ form_row(formSearch.end, {
                     widget_class: 'rounded-lg mr-4 searchbar-ctn-date criteria'
                 }) }} #}
-
-                {# <button type="submit" class="font-bold btn btn-secondary mr-4">Rechercher</button> #}
                 <button class="font-bold btn btn-primary btn-filter">+ de filtres</button>
                 
             </div>

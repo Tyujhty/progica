@@ -1,0 +1,12 @@
+<div class="ctn w-1/3 flex flex-col items-center">
+    <a href=" {{path('gite_show', {'id' : shelter.id} )}} ">
+        <h2> {{ shelter.name }} </h2>
+        <div class="">
+            <img src=" {{ shelter.image }}" alt="Image d'illustration du gîte" class="w-full rounded">
+        </div>
+    </a>
+    <div class="w-full">
+        <p> {{ shelter.town }} </p>
+        <p> <strong>{{ shelter.price }}€</strong> par nuit </p>
+    </div>
+</div>
