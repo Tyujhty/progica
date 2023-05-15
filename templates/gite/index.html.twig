@@ -4,47 +4,70 @@
 
 {% block body %}
 <div class="flex giteShow mt-10">
-    
     <div class="w-10/12 mx-3 giteShow-card">
-        <h1 class="text-center text-3xl mb-6 giteShow-card-title"> {{ shelter.name }} </h1>
-        <div class="container w-4/5 mx-auto py-2 giteShow-card-gallery">
-            <img src="{{ shelter.image }}" alt="">
+        
+        <div class="flex flex-col w-3/4 mx-auto mb-4">
+            <h1 class="text-3xl mb-6 giteShow-card-title"> {{ shelter.name }} </h1>
+            <p><i class="fa-solid fa-location-dot"></i> {{ shelter.town }}</p>
         </div>
-        <div class="giteShow-card-desc">
-            <p>{{ shelter.surface}} m²</p>
-            <p>nombre de chambres{{ shelter.nbBedrooms}}</p>
-            <p>nombre de couchages{{ shelter.nbBeds}}</p>
+        
+        <div class="container w-3/4 mx-auto py-2 giteShow-card-gallery">
+            <img src="{{ shelter.image }}" alt="Photographie illustration gîte" class="rounded-3xl">
+        </div>
 
-            {% if shelter.acceptAnimals == 1 %}
-                Animaux acceptés
-                <p>Les animaux prix {{ shelter.priceAnimals }}</p>
-            {% endif %}
+        <div class="giteShow-card-desc w-3/4 mx-auto py-4">
+            <p class="text-xl font-semibold"> Chez {{shelter.owner.firstname}} {{shelter.owner.lastname}}</p>
+            <div class="flex text-lg mb-8">
+                <p>Surface du logement : {{ shelter.surface}} m² </p>
+                <span class="mx-1"> · </span>
+                <p>{{ shelter.nbBedrooms}} {% if shelter.nbBedrooms > 1 %} chambres {% else %} chambre {% endif %}
+                </p>
+                <span class="mx-1"> · </span>
+                <p>{{ shelter.nbBeds}} {% if shelter.nbBeds > 1 %} lits {% else %} lit {% endif %}
+            </div>
+                {% if shelter.acceptAnimals == 1 %}
+                    <p><i class="fa-solid fa-paw text-xl mr-2 mb-2"></i> Les animaux sont acceptés </p>
+                {% endif %}
+            <hr class="mb-4">
+
+            <h2 class="mb-2 text-2xl">Description du logement</h2>
+            <p class="mb-4">{{ shelter.description }}</p>
             
-            
-            <p>Ville {{ shelter.town }}</p>
+            <hr class="mb-4">
 
-            {% if interiorEquipments is not empty %}
-                <h2>Intérieur</h2>
-                {% for interiorEquipment in interiorEquipments %}
-                    <p>{{ interiorEquipment.name }}</p>
-                    <p>{{ interiorEquipment.description }}</p>
-                {% endfor %}
-            {% endif %}
+            <div class=" bg-slate-100 py-2 px-4 rounded-2xl">
 
-            {% if exteriorEquipments is not empty %}
-                <h2>Exterieur</h2>
-                {% for exteriorEquipment in exteriorEquipments %}
-                    <p>{{ exteriorEquipment.name }}</p>
-                    <p>{{ exteriorEquipment.description }}</p>
-                {% endfor %}
-            {% endif %}
+                {% if interiorEquipments is not empty %}
+                <h2 class="text-2xl mb-4">Ce que propose ce logement</h2>          
+                    {% for interiorEquipment in interiorEquipments %}
+                        <div class="flex items-center mb-4">
+                            <img class="w-7 mr-2" src="{{ interiorEquipment.icones }}" alt="Icone de l'équipement">
+                            <p>{{ interiorEquipment.name }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}            
 
-            {% if services is not empty %}
-                <h2>Services</h2>
-                {% for service in services %}
-                    <p>{{ service.name }}</p>
-                {% endfor %}
-            {% endif %}
+
+                {% if exteriorEquipments is not empty %}
+                    {% for exteriorEquipment in exteriorEquipments %}
+                        <div class="flex items-center mb-4">
+                            <img class="w-7 mr-2" src="{{ exteriorEquipment.icones }}" alt="Icone de l'équipement">
+                            <p>{{ exteriorEquipment.name }}</p>
+                        </div>                        
+                    {% endfor %}
+                {% endif %}
+
+                <hr class="mb-4">
+                {% if services is not empty %}
+                <h2 class="text-2xl mb-4">Les services proposés dans ce logement</h2>   
+                    {% for service in services %}
+                        <div class="flex items-center mb-4">
+                            <img class="w-7 mr-2" src="{{ service.icones }}" alt="Icone du service">
+                            <p>{{ service.name }}</p>
+                        </div>                         
+                    {% endfor %}
+                {% endif %}
+            </div>
 
         </div>
         <div class="giteShow-card-services">
@@ -63,10 +86,11 @@
                 <p> {{shelter.price.beginning.format('d-m-Y')}} </p>
                 <p> {{shelter.price.end.format('d-m-Y')}} </p>
                 <p>{{ shelter.price }} / nuit </p>
+                {% if shelter.acceptAnimals == 1 %}
+                    <p>{{ shelter.priceAnimals }}€ par animal</p>
+                {% endif %}
             </div>
             <div class="giteShow-contact-card-owner">
-                <h2>Nom du propriétaire</h2>
-                <p>{{ shelter.owner.lastname }} {{shelter.owner.firstname}}</p>
                 <h2>Contact</h2>
                 <p>{{ shelter.manager.lastname }} {{ shelter.manager.firstname }}</p>
                 <p>Horaires de contact</p>

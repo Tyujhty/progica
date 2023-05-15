@@ -1,9 +1,9 @@
 <div class="flex flex-wrap w-full">
 
     {% if countShelters is defined %} 
-        <div class="w-full h-8 flex items-center pl-4 ">
-            <p class=' text-lg'>Nous avons trouvé : {{ countShelters }} {% if countShelters > 0 %} à {% endif %} {{criteriaTown}}</p>
-        </div>
+        <div class="w-full h-8 flex items-center pl-4 pb-4 ">
+            <p class=' text-lg'>Nous avons trouvé : <strong>{{ countShelters }}</strong> gîte(s) correspondant à vos critères</p>
+        </div>    
     {% endif %}
 
     <div class="w-full flex flex-wrap">

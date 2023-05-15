@@ -62,6 +62,9 @@ class Shelter
     #[ORM\ManyToMany(targetEntity: Service::class, mappedBy: 'service')]
     private Collection $services;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->interiorEquipment = new ArrayCollection();
@@ -283,6 +286,18 @@ class Shelter
         if ($this->services->removeElement($service)) {
             $service->removeService($this);
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

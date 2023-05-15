@@ -21,6 +21,9 @@ class Service
     #[ORM\ManyToMany(targetEntity: Shelter::class, inversedBy: 'services')]
     private Collection $service;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $icones = null;
+
     public function __construct()
     {
         $this->service = new ArrayCollection();
@@ -63,6 +66,18 @@ class Service
     public function removeService(Shelter $service): self
     {
         $this->service->removeElement($service);
+
+        return $this;
+    }
+
+    public function getIcones(): ?string
+    {
+        return $this->icones;
+    }
+
+    public function setIcones(?string $icones): self
+    {
+        $this->icones = $icones;
 
         return $this;
     }
