@@ -14,32 +14,35 @@ btnFilter.addEventListener('click', (event) => {
 })
 
 window.onload = () => {
-    const searchForm = document.querySelector('#searchForm');
-    const searchFormSelect = document.querySelectorAll(".criteria");
+  const searchForm = document.querySelector('#searchForm');
+  const searchFormSelect = document.querySelectorAll(".criteria");
 
-    searchFormSelect.forEach(select => {
-        select.addEventListener('change', () => {
+  searchFormSelect.forEach(select => {
+    select.addEventListener('change', () => {
 
-            const Form = new FormData(searchForm)
+      const form = new FormData(searchForm);
+      const params = new URLSearchParams();
 
-            const Params = new URLSearchParams()
-            Form.forEach((value, key) => {
-                Params.append(key, value)
-            })
+      form.forEach((value, key) => {
+        params.append(key, value);
+      });
 
-            const Url = new URL(window.location.href)
-            
-            fetch(Url.pathname + '?' + Params.toString() + "&ajax=1", {
-                headers: {
-                    "x-Requested-with": "XMLHttpRequest"
-                }
-            }).then(response => 
-                response.json()
-            ).then(data => {
-                const content = document.querySelector('#content')
-                content.innerHTML = data.content;
+      const url = new URL(window.location.href);
+
+      // Exclure l'URL "/gite/" de la requête Ajax
+      if (!url.pathname.includes("/gite/")) {
+        fetch(url.pathname + '?' + params.toString() + "&ajax=1", {
+          headers: {
+            "X-Requested-With": "XMLHttpRequest"
+          }
         })
-            .catch(e => alert(e))
-        }) 
-    })
-}
+        .then(response => response.json())
+        .then(data => {
+          const content = document.querySelector('#content');
+          content.innerHTML = data.content;
+        })
+        .catch(e => alert(e));
+      }
+    });
+  });
+};
