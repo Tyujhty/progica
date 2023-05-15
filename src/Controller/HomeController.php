@@ -28,6 +28,7 @@ class HomeController extends AbstractController
         if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'] || (isset($criteria['interior']) && !$criteria['interior']->isEmpty()) || (isset($criteria['exterior']) && !$criteria['exterior']->isEmpty()) || (isset($criteria['services']) && !$criteria['services']->isEmpty()))) {
 
             $shelters = $shelterRepository->searchSheltersByCriteria($criteria);
+            
             if($shelters) {
                 $countShelters = count($shelters);
                 $criteriaInput = $criteria['town']; 
@@ -35,6 +36,7 @@ class HomeController extends AbstractController
         } else {
             $shelters = $shelterRepository->findAll();
         }
+        
 
         if ($request->get('ajax')) {
             return new JsonResponse([

@@ -23,9 +23,10 @@ class GiteController extends AbstractController
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
             $criteria = $formSearch->getData();
-            $shelters = $shelterRepository->searchSheltersByCriteria($criteria);
 
-            return $this->redirectToRoute('home', $shelters);
+            $criteria = $request->query->all();
+
+            return $this->redirectToRoute('home', $criteria);
         };
 
         
