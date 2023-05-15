@@ -33,41 +33,46 @@
             <h2 class="mb-2 text-2xl">Description du logement</h2>
             <p class="mb-4">{{ shelter.description }}</p>
             
-            <hr class="mb-4">
 
-            <div class=" bg-slate-100 py-2 px-4 rounded-2xl">
-
-                {% if interiorEquipments is not empty %}
-                <h2 class="text-2xl mb-4">Ce que propose ce logement</h2>          
-                    {% for interiorEquipment in interiorEquipments %}
-                        <div class="flex items-center mb-4">
-                            <img class="w-7 mr-2" src="{{ interiorEquipment.icones }}" alt="Icone de l'équipement">
-                            <p>{{ interiorEquipment.name }}</p>
-                        </div>
-                    {% endfor %}
-                {% endif %}            
-
-
-                {% if exteriorEquipments is not empty %}
-                    {% for exteriorEquipment in exteriorEquipments %}
-                        <div class="flex items-center mb-4">
-                            <img class="w-7 mr-2" src="{{ exteriorEquipment.icones }}" alt="Icone de l'équipement">
-                            <p>{{ exteriorEquipment.name }}</p>
-                        </div>                        
-                    {% endfor %}
-                {% endif %}
-
+            {% if interiorEquipments is not empty  and exteriorEquipments is not empty  and services is not empty %}
+                
                 <hr class="mb-4">
-                {% if services is not empty %}
-                <h2 class="text-2xl mb-4">Les services proposés dans ce logement</h2>   
-                    {% for service in services %}
-                        <div class="flex items-center mb-4">
-                            <img class="w-7 mr-2" src="{{ service.icones }}" alt="Icone du service">
-                            <p>{{ service.name }}</p>
-                        </div>                         
-                    {% endfor %}
-                {% endif %}
-            </div>
+                <div class=" bg-slate-100 py-2 px-4 rounded-2xl">
+
+                    {% if interiorEquipments is not empty %}
+                    <h2 class="text-2xl mb-4">Ce que propose ce logement</h2>          
+                        {% for interiorEquipment in interiorEquipments %}
+                            <div class="flex items-center mb-4">
+                                <img class="w-7 mr-2" src="{{ interiorEquipment.icones }}" alt="Icone de l'équipement">
+                                <p>{{ interiorEquipment.name }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}            
+
+
+                    {% if exteriorEquipments is not empty %}
+                        {% for exteriorEquipment in exteriorEquipments %}
+                            <div class="flex items-center mb-4">
+                                <img class="w-7 mr-2" src="{{ exteriorEquipment.icones }}" alt="Icone de l'équipement">
+                                <p>{{ exteriorEquipment.name }}</p>
+                            </div>                        
+                        {% endfor %}
+                    {% endif %}
+
+                    <hr class="mb-4">
+                    {% if services is not empty %}
+                    <h2 class="text-2xl mb-4">Les services proposés dans ce logement</h2>   
+                        {% for service in services %}
+                            <div class="flex items-center mb-4">
+                                <img class="w-7 mr-2" src="{{ service.icones }}" alt="Icone du service">
+                                <p>{{ service.name }}</p>
+                            </div>                         
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            
+            {% endif %}
+            
 
         </div>
         <div class="giteShow-card-services">
