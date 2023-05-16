@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="flex giteShow mt-10">
-    <div class="w-10/12 mx-3 giteShow-card">
+    <div class="w-9/12 mx-3 giteShow-card">
         
         <div class="flex flex-col w-3/4 mx-auto mb-4">
             <h1 class="text-3xl mb-6 giteShow-card-title"> {{ shelter.name }} </h1>
@@ -72,7 +72,9 @@
                 </div>
             
             {% endif %}
-            
+                <h2>Contact</h2>
+                <p>{{ shelter.manager.lastname }} {{ shelter.manager.firstname }}</p>
+                <p>Horaires de contact</p>
 
         </div>
         <div class="giteShow-card-services">
@@ -84,32 +86,31 @@
         </div>
     </div>
     
-    <div class="w-2/12 giteShow-contact">
-        <div class="fixed w-48 h-52 giteShow-contact-card">
-        
-        <div class="">
-            
-        
-        </div>
-            <div class="giteShow-contact-card-prices">
-                <input type="date" id="search_start" name="search[start]" class="rounded-lg searchbar-ctn-date" value="{{ app.session.get('selected_date_start') }}" />
-                <input type="date" id="search_end" name="search[end]" class="rounded-lg searchbar-ctn-date" value="{{ app.session.get('selected_date_end') }}" />
-            <div class=""> 
+    <div class="flex w-3/12 giteShow-contact">
+        <div class="flex flex-col justify-between fixed py-8 px-4  rounded-2xl border shadow-lg  giteShow-contact-card">
 
-             </div>
-                <h2>Périodes</h2>
-                <p> {{shelter.price.beginning.format('d-m-Y')}} </p>
-                <p> {{shelter.price.end.format('d-m-Y')}} </p>
-                <p>{{ shelter.price }} / nuit </p>
-                {% if shelter.acceptAnimals == 1 %}
-                    <p>{{ shelter.priceAnimals }}€ par animal</p>
-                {% endif %}
+            <div class="flex flex-col giteShow-contact-card-prices">
+                
+                <p class="mb-4"><span class="font-medium text-2xl">{{ shelter.price }}€ </span>par nuit </p>
+                
+                <form class="flex" id="pickerDiv" data-shelter-id="{{ shelter.id }}">
+                    <div class="flex flex-col">
+                        <label for="search[start]"><small>Arrivée</small></label>
+                        <input type="date" id="search_start" name="search[start]" class="rounded-l-lg searchbar-ctn-date datePicker" value="{{ app.session.get('selected_date_start') }}" />
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="search[end]"><small>Départ</small></label>
+                        <input type="date" id="search_end" name="search[end]" class="rounded-r-lg searchbar-ctn-date datePicker" value="{{ app.session.get('selected_date_end') }}" />                    
+                    </div>
+                </form>
+            
+            <div id='contentDateSearch'>
+                {% include "_partials/_contentDateSearch.html.twig" %}
             </div>
-            <div class="giteShow-contact-card-owner">
-                <h2>Contact</h2>
-                <p>{{ shelter.manager.lastname }} {{ shelter.manager.firstname }}</p>
-                <p>Horaires de contact</p>
-                <a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Contacter</a>
+                
+            </div>
+            <div class="text-center">
+                <a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Réserver</a>
             </div>
         </div>
     </div>

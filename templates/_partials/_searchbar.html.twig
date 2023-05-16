@@ -29,6 +29,19 @@
                     {{ form_row(formSearch.end, {
                         widget_class: 'rounded-lg mr-4 searchbar-ctn-date criteria'
                     }) }}
+
+                {% else %}
+                    <span class='mr-4 hidden'>du </span>
+
+                    {{ form_row(formSearch.start, {
+                        widget_class: 'rounded-lg searchbar-ctn-date criteria hidden'
+                    }) }}
+
+                    <span class='mx-4 hidden'> au </span>
+                    
+                    {{ form_row(formSearch.end, {
+                        widget_class: 'rounded-lg mr-4 searchbar-ctn-date criteria hidden'
+                    }) }}
          
                 {% endif %}
                            
@@ -61,7 +74,6 @@
         {{ form_row(formSearch.services, {
             widget_class:'criteria'
         }) }}
-
     </div>
 {{ form_end(formSearch) }}
 

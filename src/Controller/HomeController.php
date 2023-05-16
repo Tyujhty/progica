@@ -4,7 +4,6 @@ namespace App\Controller;
 
 
 use App\Form\SearchType;
-use App\Repository\InteriorEquipmentRepository;
 use App\Repository\ShelterRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,21 +23,30 @@ class HomeController extends AbstractController
 
         $criteria = $formSearch->getData();
         $countShelters = 0;
+        $differenceInDays = 0;
 
         $dateStart = $formSearch->get('start')->getData();
         $dateEnd = $formSearch->get('end')->getData();
-        
-        if ($dateStart instanceof \DateTimeInterface) {
+
+        if ($dateStart instanceof \DateTimeInterface && $dateEnd instanceof \DateTimeInterface) {
             $selectedDateStart = $dateStart->format('Y-m-d');
+            $selectedDateEnd = $dateEnd->format('Y-m-d');
+            
+            // Calcul de la différence en jours
+            $differenceInDays = $dateEnd->diff($dateStart)->days;
+    
             $sessionInterface->remove('selected_date_start');
             $sessionInterface->set('selected_date_start', $selectedDateStart);
-        }
-        
-        if ($dateEnd instanceof \DateTimeInterface) {
-            $selectedDateEnd = $dateEnd->format('Y-m-d');
             $sessionInterface->remove('selected_date_end');
             $sessionInterface->set('selected_date_end', $selectedDateEnd);
+            $sessionInterface->remove('difference_in_days');
+            $sessionInterface->set('difference_in_days', $differenceInDays);
+        } else {
+            $sessionInterface->remove('selected_date_start');
+            $sessionInterface->remove('selected_date_end');
+            $sessionInterface->remove('difference_in_days');
         }
+        
 
         if ($criteria && ($criteria['town'] || $criteria['department'] || $criteria['region'] || (isset($criteria['interior']) && !$criteria['interior']->isEmpty()) || (isset($criteria['exterior']) && !$criteria['exterior']->isEmpty()) || (isset($criteria['services']) && !$criteria['services']->isEmpty()))) {
 

@@ -1,0 +1,19 @@
+<div class="my-8">
+    {% set differenceInDays = app.session.get('difference_in_days') %}
+    {% set totalPrice = differenceInDays * shelter.price.getPrice() %}
+    <div class="flex justify-between my-2">
+        <p id='totalPrice'>{{shelter.price}}€ x {{differenceInDays}} nuit(s)</p>
+        <p> {{ totalPrice }}€ </p>
+    </div>
+    <div class="flex justify-between my-2">
+        {% if shelter.acceptAnimals == 1 %}
+            <p>frais animal</p>
+            <p>{{ shelter.priceAnimals }}€</p>
+        {% endif %}                
+    </div>
+    <hr>
+    <div class="flex justify-between font-medium text-xl my-2">
+        <p>Total</p>
+        <p>{{ totalPrice + shelter.priceAnimals }}€</p>
+    </div>
+</div>                
