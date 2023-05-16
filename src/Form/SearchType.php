@@ -43,19 +43,19 @@ class SearchType extends AbstractType
                 'required' => false
             ])
 
-            // ->add('start', DateType::class, [
-            //     'widget' => 'single_text',
-            //     'model_timezone' => 'Europe/Paris',
-            //     'view_timezone' => 'Europe/Paris',
-            //     'required' => false,
-            //     'label' => false
-            // ])
+            ->add('start', DateType::class, [
+                'widget' => 'single_text',
+                'model_timezone' => 'Europe/Paris',
+                'view_timezone' => 'Europe/Paris',
+                'required' => false,
+                'label' => false
+            ])
             
-            // ->add('end', DateType::class, [
-            //     'widget' => 'single_text',
-            //     'required' => false,
-            //     'label' => false
-            // ])
+            ->add('end', DateType::class, [
+                'widget' => 'single_text',
+                'required' => false,
+                'label' => false
+            ])
 
             ->add('interior', EntityType::class, [
                 'class' => InteriorEquipment::class,

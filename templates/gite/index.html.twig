@@ -86,7 +86,17 @@
     
     <div class="w-2/12 giteShow-contact">
         <div class="fixed w-48 h-52 giteShow-contact-card">
+        
+        <div class="">
+            
+        
+        </div>
             <div class="giteShow-contact-card-prices">
+                <input type="date" id="search_start" name="search[start]" class="rounded-lg searchbar-ctn-date" value="{{ app.session.get('selected_date_start') }}" />
+                <input type="date" id="search_end" name="search[end]" class="rounded-lg searchbar-ctn-date" value="{{ app.session.get('selected_date_end') }}" />
+            <div class=""> 
+
+             </div>
                 <h2>Périodes</h2>
                 <p> {{shelter.price.beginning.format('d-m-Y')}} </p>
                 <p> {{shelter.price.end.format('d-m-Y')}} </p>
