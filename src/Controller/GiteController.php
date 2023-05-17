@@ -59,7 +59,7 @@ class GiteController extends AbstractController
             }
             return new JsonResponse([
                 'content' => $this->renderView('_partials/_contentDateSearch.html.twig', [
-                    'shelter' => $shelter,
+                    'shelter' => $shelter
 
                 ])
             ]);
