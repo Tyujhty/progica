@@ -4,7 +4,9 @@
     color: $text-gray;
 }
 
-#search_interior, #search_exterior, #search_services {
+#search_interior,
+#search_exterior,
+#search_services {
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -13,4 +15,16 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 5px 15px;
+
+
+}
+
+#search_interior label,
+#search_exterior label,
+#search_services label {
+
+    &:hover {
+        cursor: pointer;
+        background-color: $border-color-light;
+    }
 }
