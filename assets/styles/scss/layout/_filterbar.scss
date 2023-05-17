@@ -3,3 +3,14 @@
     box-shadow: rgba(0, 0, 0, 0.45) 0px 15px 15px -21px;
     color: $text-gray;
 }
+
+#search_interior, #search_exterior, #search_services {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    width: 90%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px 15px;
+}

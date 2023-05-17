@@ -56,24 +56,8 @@
             </div>
     </div>
 </div>
-<div class="hidden justify-around px-60 pt-3 h-48 filters">
-    <div class="">
-        <h2>Intérieur</h2>
-        {{ form_row(formSearch.interior, {
-            widget_class:'criteria'
-        }) }}
-    </div>
-    <div class="">
-        <h2>Extérieur</h2>
-        {{ form_row(formSearch.exterior, {
-            widget_class:'criteria'
-        }) }}
-    </div>
-    <div class="">
-        <h2>Services</h2>
-        {{ form_row(formSearch.services, {
-            widget_class:'criteria'
-        }) }}
-    </div>
+
+{% include "_partials/_filters.html.twig" %}
+
 {{ form_end(formSearch) }}
 
