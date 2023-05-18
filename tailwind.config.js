@@ -7,6 +7,15 @@ module.exports = {
     './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
+    colors: {
+      bgGolorGrayLight: '#F3F3F3',
+      bgColorYellow: '#FF9F1C',
+      txtBlueDark: '#2EC4B6',
+      txtBlueLight: '#40ffec',
+      txtGray: '#5f5F5F',
+      txtGrayLight: '#E6E6E6',
+      borderColorLight: '#CBF3F0'
+    },
     extend: {},
   },
   plugins: [

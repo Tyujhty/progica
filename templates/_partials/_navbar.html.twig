@@ -1,22 +1,26 @@
-<nav class="h-20 flex justify-around navbar">
-    <a href="{{'/'}}" class="w-2/12 h-20 flex items-center  justify-center navbar-logo">
-        <img src=" {{asset('/images/logo/logo-progica.png')}} " alt="Logo Progica">
+<nav class="h-20 flex justify-around">
+
+    <a href="{{'/'}}" class="w-2/6 md:w-2/12 h-20 flex items-center justify-center">
+        <img src="{{ asset('/images/logo/logo-progica.png') }} " alt="Logo Progica" class="max-h-16">
     </a>
-    <div class="w-7/12 flex items-center navbar-slogan">
-        <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold navbar-span'>gîte</span> de rêve !</p>
+
+    <div class="w-7/12 hidden md:flex items-center">
+        <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold text-txtBlueDark'>gîte</span> de rêve !</p>
     </div>
-    <div class="w-3/12 flex items-center justify-center navbar-profile">
-        <div class="w-auto h-14 px-2 py-0 mr-5 rounded-full border-4 flex items-center navbar-profile-ctn">
-            <div class=" relative navbar-profile-ctn-img">
-                <img src=" {{asset('/images/users/1.jpg')}} " alt="Avatar utilisateur" class="h-16 border-4 rounded-full">
+
+    <div class="w-2/6 med:w-3/12 flex items-center justify-center">
+        <div class="w-auto h-14 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
+            <div class="relative -left-4">
+                <img src=" {{ asset('/images/users/1.jpg') }} " alt="Avatar de l'utilisateur" class="h-16 border-4 border-borderColorLight rounded-full">
             </div>
-            <div class="relative pr-3 navbar-profile-ctn-id">
+            <div class="hidden md:inline md:relative pr-3">
                 <a href="" class="">
                     <p id="name-id" class="font-bold">Mario Dupond</p>
                     <p id="type-id" class='text-sm font-semibold'>Propriétaire</p> 
                 </a>                      
             </div>
         </div>
-        <i class=" text-2xl fa-solid fa-arrow-right-from-bracket"></i>
+        <i class="fa-solid fa-arrow-right-from-bracket text-2xl text-txtBlueDark cursor-pointer duration-500 hover:text-txtBlueLight"></i>
     </div>
+
 </nav>
