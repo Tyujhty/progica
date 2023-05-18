@@ -17,3 +17,4 @@ import 'tw-elements';
 // JS import
 import "./javascripts/filters";
 import "./javascripts/datePickerCalculPrice";
+import "./javascripts/dynamicStyleFilterSelection";

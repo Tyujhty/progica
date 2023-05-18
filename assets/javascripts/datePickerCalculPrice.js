@@ -27,7 +27,6 @@ if (url.pathname.includes("/gite/")) {
                     contentDateSearch.innerHTML = data.content;
                   })
                   .catch(e => alert(e));
-
             })
         })
     }
