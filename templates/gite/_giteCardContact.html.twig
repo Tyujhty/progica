@@ -1,0 +1,29 @@
+<div class="flex w-3/12">
+    <div class="flex flex-col justify-between fixed py-8 px-4  rounded-2xl border shadow-lg">
+
+        <div class="flex flex-col">
+            
+            <p class="mb-4"><span class="font-medium text-2xl">{{ shelter.price }}€ </span>par nuit </p>
+            
+            <form class="flex" id="pickerDiv" data-shelter-id="{{ shelter.id }}">
+                <div class="flex flex-col">
+                    <label for="search[start]"><small>Arrivée</small></label>
+                    <input type="date" id="search_start" name="search[start]" class="rounded-l-lg searchbar-ctn-date datePicker" value="{{ app.session.get('selected_date_start') }}" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="search[end]"><small>Départ</small></label>
+                    <input type="date" id="search_end" name="search[end]" class="rounded-r-lg searchbar-ctn-date datePicker" value="{{ app.session.get('selected_date_end') }}" />                    
+                </div>
+            </form>
+        
+        <div id='contentDateSearch'>
+            {% include "_partials/_contentDateSearch.html.twig" %}
+        </div>
+            
+        </div>
+        <div class="text-center">
+            <a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Réserver</a>
+        </div>
+        
+    </div>
+</div>
