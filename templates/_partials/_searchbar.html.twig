@@ -1,12 +1,28 @@
 {% form_theme formSearch 'tailwind_2_layout.html.twig' %}
 
-<div class="h-20 flex justify-center items-center searchbar">
-    <div class="searchbar-txt">
+<div class="h-20 bg-bgGolorGrayLight flex justify-center items-center">
+    
+    <div class="hidden xl:inline">
         <p>Je recherche un gîte</p>
     </div>
-    <div class="flex justify-center items-center h-full ml-6 searchbar-ctn">
+    
+    <div class="w-full md:max-w-screen-sm flex xl:hidden items-center justify-center">
+        <button class="btn-search flex items-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="absolute left-1/2 -translate-x-2/4">
+                <p class="">Je recherche un gîte</p>
+                <small class="font-light">par région, département ou ville</small>
+            </div>
+        </button>
+    </div>
+
+    <div id="container-search" class="hidden xl:flex justify-center items-center h-full ml-6">
         {{ form_start(formSearch) }}
             <div class="flex items-center">
+                
+                <p class="hidden text-txtBlueDark font-medium text-xl">Je recherche ma destination</p>
+                <i class="hidden fa-regular fa-circle-xmark"></i>
+
                 {{ form_row(formSearch.region, {
                     widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
                 })}}
@@ -17,35 +33,38 @@
                     widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
                 })}}
 
-                {% if app.request.attributes.get('_route') == 'home' %}
-                    <span class='mr-4'>du </span>
+                <div class="hidden xl:flex xl:items-center">
+                    {% if app.request.attributes.get('_route') == 'home' %}
+                        <span class='mr-4'>du </span>
 
-                    {{ form_row(formSearch.start, {
-                        widget_class: 'rounded-lg searchbar-ctn-date criteria'
-                    }) }}
+                        {{ form_row(formSearch.start, {
+                            widget_class: 'text-txtGray rounded-lg criteria'
+                        }) }}
 
-                    <span class='mx-4'> au </span>
-                    
-                    {{ form_row(formSearch.end, {
-                        widget_class: 'rounded-lg mr-4 searchbar-ctn-date criteria'
-                    }) }}
+                        <span class='mx-4'> au </span>
+                        
+                        {{ form_row(formSearch.end, {
+                            widget_class: 'text-txtGray rounded-lg mr-4 criteria'
+                        }) }}
 
-                {% else %}
-                    <span class='mr-4 hidden'>du </span>
+                    {% else %}
 
-                    {{ form_row(formSearch.start, {
-                        widget_class: 'rounded-lg searchbar-ctn-date criteria hidden'
-                    }) }}
+                        <span class='mr-4 hidden'>du </span>
 
-                    <span class='mx-4 hidden'> au </span>
-                    
-                    {{ form_row(formSearch.end, {
-                        widget_class: 'rounded-lg mr-4 searchbar-ctn-date criteria hidden'
-                    }) }}
-         
-                {% endif %}
-                           
-                <button class="font-bold btn btn-primary btn-filter">+ de filtres</button>
+                        {{ form_row(formSearch.start, {
+                            widget_class: 'text-txtGray rounded-lg criteria hidden'
+                        }) }}
+
+                        <span class='mx-4 hidden'> au </span>
+                        
+                        {{ form_row(formSearch.end, {
+                            widget_class: 'text-txtGray rounded-lg mr-4 criteria hidden'
+                        }) }}
+            
+                    {% endif %}                 
+                </div>
+      
+                <button class="hidden xl:inline font-bold btn btn-primary btn-filter">+ de filtres</button>
                 
                 {% if app.request.attributes.get('_route') == 'gite_show' %}
                     

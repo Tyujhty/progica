@@ -18,3 +18,4 @@ import 'tw-elements';
 import "./javascripts/filters";
 import "./javascripts/datePickerCalculPrice";
 import "./javascripts/dynamicStyleFilterSelection";
+import "./javascripts/toggleSearchBar";
