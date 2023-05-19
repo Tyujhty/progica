@@ -1,5 +1,7 @@
+
+// Gestion de l'ouverture du volet filtre
 const btnFilter = document.querySelector('.btn-filter');
-const ctnFilters = document.querySelector('.filters');
+const ctnFilters = document.querySelector('#filters');
 
 btnFilter.addEventListener('click', (event) => {
     event.preventDefault();
@@ -12,6 +14,9 @@ btnFilter.addEventListener('click', (event) => {
         ctnFilters.classList.add("hidden");
     }
 })
+
+
+//Gestion de la recherche avec un requête Ajax
 
 window.onload = () => {
   const searchForm = document.querySelector('#searchForm');

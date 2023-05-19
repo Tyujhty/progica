@@ -16,7 +16,11 @@ module.exports = {
       txtGrayLight: '#E6E6E6',
       borderColorLight: '#CBF3F0'
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        'shadowFilters': 'rgba(0, 0, 0, 0.45) 0px 15px 15px -21px'
+      }
+    },
   },
   plugins: [
     require('tw-elements/dist/plugin'),

@@ -1,6 +1,6 @@
 .btn {
-    padding: 10px 20px;
     border-radius: 25px;
+    padding: 10px 20px;
 }
 
 .btn-primary {
@@ -15,8 +15,8 @@
 .btn-secondary {
     background-color: $bg-color-yellow;
     color: white;
-    transition: $transition-smooth;
     font-weight: 500;
+    transition: $transition-smooth;
 
     &:hover {
         opacity: .7;
@@ -24,12 +24,13 @@
 }
 
 .btn-search {
+
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     font-weight: 500;
     width: 90%;
     padding: 20px 20px;
-    border-radius: 25px;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     transition: $transition-smooth;
 
     &:hover {
