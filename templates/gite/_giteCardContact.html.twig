@@ -1,5 +1,5 @@
-<div class="flex w-3/12">
-    <div class="flex flex-col justify-between fixed py-8 px-4  rounded-2xl border shadow-lg">
+<div class="lg:flex lg:w-3/12">
+    <div class="w-full lg:w-auto h-35% lg:h-auto flex flex-col justify-between absolute lg:fixed left-0 lg:left-3/4 py-0 lg:py-8 px-4 rounded-2xl border shadow-lg">
 
         <div class="flex flex-col">
             
@@ -16,13 +16,13 @@
                 </div>
             </form>
         
-        <div id='contentDateSearch'>
-            {% include "_partials/_contentDateSearch.html.twig" %}
-        </div>
+            <div id='contentDateSearch'>
+                {% include "_partials/_contentDateSearch.html.twig" %}
+            </div>
+            <div class="text-center">
+                <a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Réserver</a>
+            </div>
             
-        </div>
-        <div class="text-center">
-            <a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Réserver</a>
         </div>
         
     </div>

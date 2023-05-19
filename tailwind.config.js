@@ -19,6 +19,12 @@ module.exports = {
     extend: {
       boxShadow: {
         'shadowFilters': 'rgba(0, 0, 0, 0.45) 0px 15px 15px -21px'
+      },
+      height: {
+        '35%': '35%'
+      },
+      margin: {
+        '20rem': '20rem'
       }
     },
   },

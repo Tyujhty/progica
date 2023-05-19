@@ -1,40 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Progica - Echappez à la routine, louez un gîte de rêve
-{% endblock %}
+{% block title %} Progica - Echappez à la routine, louez un gîte de rêve {% endblock %}
 
 {% block body %}
-	<div class="flex mt-10 mb-10">
-
-		<div class="w-9/12 mx-3">
-
-			<div class="flex flex-col w-3/4 mx-auto mb-4">
-				<h1 class="text-3xl mb-6">
-					{{ shelter.name }}
-				</h1>
-				<p>
-					<i class="fa-solid fa-location-dot"></i>
-					{{ shelter.town }}</p>
+	<div class="flex mt-44 lg:mt-10 mb-10">
+		
+		<div class="w-full mt-20rem lg:mt-0 lg:w-9/12 mx-3">
+			
+			<div class="flex flex-col w-full lg:w-3/4 mx-auto mb-4">
+				<h1 class="text-3xl mb-6">{{ shelter.name }}</h1>
+				<p class=" text-lg"><i class="fa-solid fa-location-dot mr-2"></i>{{ shelter.town }}</p>
 			</div>
 
-			<div class="container w-3/4 mx-auto py-2">
+			<div class="w-full lg:w-3/4 lg:mx-auto py-2">
 				<img src="{{ shelter.image }}" alt="Photographie illustration gîte" class="rounded-3xl">
 			</div>
 
-			<div class="w-3/4 mx-auto py-4">
-
-				<p class="text-xl font-semibold">
-					Chez
-					{{shelter.owner.firstname}}
-					{{shelter.owner.lastname}}</p>
+			<div class="w-full lg:w-3/4 mx-auto py-4">
+				<p class="text-xl font-semibold">Chez {{shelter.owner.firstname}} {{shelter.owner.lastname}}</p>
+				
 				<div class="flex text-lg mb-8">
-					<p>Surface du logement :
-						{{ shelter.surface}}
-						m²
-					</p>
-					<span class="mx-1">
-						·
-					</span>
+					<p>{{ shelter.surface}} m²</p>
+					<span class="mx-1"> · </span>
 					<p>{{ shelter.nbBedrooms}}
 						{% if shelter.nbBedrooms > 1 %}
 							chambres
@@ -42,9 +29,7 @@
 							chambre
 						{% endif %}
 					</p>
-					<span class="mx-1">
-						·
-					</span>
+					<span class="mx-1"> · </span>
 					<p>{{ shelter.nbBeds}}
 						{% if shelter.nbBeds > 1 %}
 							lits
@@ -53,12 +38,14 @@
 						{% endif %}
 					</p>
 				</div>
+
 				{% if shelter.acceptAnimals == 1 %}
 					<p>
 						<i class="fa-solid fa-paw text-xl mr-2 mb-2"></i>
 						Les animaux sont acceptés
 					</p>
 				{% endif %}
+				
 				<hr class="mb-4">
 
 				<h2 class="mb-2 text-2xl">Description du logement</h2>
@@ -69,7 +56,7 @@
 
 					<hr class="mb-4">
 
-					<div class="bg-slate-100 py-2 px-4 rounded-2xl mb-4">
+					<div class="bg-bgGolorGrayLight py-2 px-4 rounded-2xl mb-4">
 
 						<h2 class="text-2xl mb-4">Ce que propose ce logement</h2>
 
@@ -101,16 +88,10 @@
 
 				{% endif %}
 
-				<div class="bg-slate-100 py-4 px-4 rounded-2xl">
+				<div class="bg-bgGolorGrayLight py-4 px-4 rounded-2xl">
 
-					<h2 class="text-2xl mb-2">Administré par
-						{{ shelter.manager.firstname }}
-						{{ shelter.manager.lastname }}</h2>
-					<p>Pour toute question concernant notre gîte, n'hésitez pas à contacter notre responsable
-						<strong>{{ shelter.manager.firstname }}</strong>
-						qui se fera un plaisir de vous aider.<br>
-						Vous pouvez le joindre par courrier électronique.
-					</p>
+					<h2 class="text-2xl mb-2">Administré par {{ shelter.manager.firstname }} {{ shelter.manager.lastname }}</h2>
+					<p>Pour toute question concernant notre gîte, n'hésitez pas à contacter notre responsable <strong>{{ shelter.manager.firstname }}</strong> qui se fera un plaisir de vous aider.<br><br> Vous pouvez le joindre par courrier électronique.</p>
 
 					<div class="mt-4 text-center">
 						<a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Poser des questions</a>
