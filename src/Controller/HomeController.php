@@ -74,4 +74,5 @@ class HomeController extends AbstractController
             'shelters' => $shelters
         ]);
     }
+    
 }
