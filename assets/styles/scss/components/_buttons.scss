@@ -1,5 +1,6 @@
 .btn {
     border-radius: 25px;
+    font-weight: 500;
     padding: 10px 20px;
 }
 
@@ -15,7 +16,6 @@
 .btn-secondary {
     background-color: $bg-color-yellow;
     color: white;
-    font-weight: 500;
     transition: $transition-smooth;
 
     &:hover {

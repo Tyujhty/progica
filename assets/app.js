@@ -19,3 +19,4 @@ import "./javascripts/filters";
 import "./javascripts/datePickerCalculPrice";
 import "./javascripts/dynamicStyleFilterSelection";
 import "./javascripts/toggleSearchBar";
+import './javascripts/toggleBurgerMenu';
