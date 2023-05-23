@@ -7,6 +7,7 @@
     <div class="w-5/12 hidden md:flex items-center">
         <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold text-txtBlueDark'>gîte</span> de rêve !</p>
     </div>
+    
 
     <div class="w-2/6 med:w-4/12 items-center justify-center hidden">
         <div class="w-auto h-14 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
@@ -20,7 +21,6 @@
                 </a>                      
             </div>
         </div>
-        <i class="fa-solid fa-arrow-right-from-bracket text-2xl text-txtBlueDark cursor-pointer duration-500 hover:text-txtBlueLight"></i>
     </div>
     
     <div class="w-2/6 flex lg:hidden justify-center items-center">
@@ -28,8 +28,11 @@
     </div>
 
     <div class="hidden flex items-center justify-center absolute z-30 lg:relative h-20 w-full lg:w-2/6 top-20 lg:top-0 lg:flex bg-bgGolorGrayLight lg:bg-transparent menuBurger">
-        <a href="" class="btn btn-primary mr-4">Inscription</a>
-        <a href="" class="btn btn-secondary">Connexion</a>
+        <a href="{{ path('signin')}}" class="btn btn-primary mr-4">Inscription</a>
+        <a href="{{ path('login' )}}" class="btn btn-secondary mr-4">Connexion</a>
+        <a href="{{ path('logout') }}">
+            <i class="fa-solid fa-arrow-right-from-bracket text-2xl text-txtBlueDark cursor-pointer duration-500 hover:text-txtBlueLight"></i>
+        </a>
     </div>
     
 </nav>
