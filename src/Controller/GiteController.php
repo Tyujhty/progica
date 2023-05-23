@@ -17,6 +17,7 @@ class GiteController extends AbstractController
     #[Route('/gite/{id}', name: 'gite_show')]
     public function giteCard(Request $request, Shelter $shelter, EntityManagerInterface $em, int $id, SessionInterface $sessionInterface): Response
     {
+        $user = $this->getUser();
         $shelter = $em->getRepository(Shelter::class)->find($id);
 
         $formSearch = $this->createForm((SearchType::class));
@@ -67,10 +68,11 @@ class GiteController extends AbstractController
 
         return $this->render('gite/index.html.twig', [
             'formSearch' => $formSearch->createView(),
+            'user' => $user,
             'shelter' => $shelter,
             'interiorEquipments' => $interiorEquipments,
             'exteriorEquipments' => $exteriorEquipments,
-            'services' => $services
+            'services' => $services,
         ]);
     }
 

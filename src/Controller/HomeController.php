@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request, ShelterRepository $shelterRepository,SessionInterface $sessionInterface): Response
     {   
-
+        
         $formSearch = $this->createForm(SearchType::class);
         $formSearch->handleRequest($request);
 

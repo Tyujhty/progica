@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Shelter;
-use App\Form\SearchType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

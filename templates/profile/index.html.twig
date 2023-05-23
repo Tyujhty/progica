@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+    <div class="flex flex-wrap flex-col justify-center items-center max-w-screen-2xl mt-44 lg:mt-48 h-full mx-auto mb-10">
+        <h1>Page de profil de {{user.firstname}} {{ user.lastname}} </h1>
+    </div>
+{% endblock %}

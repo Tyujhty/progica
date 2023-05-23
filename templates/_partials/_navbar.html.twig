@@ -8,31 +8,41 @@
         <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold text-txtBlueDark'>gîte</span> de rêve !</p>
     </div>
     
-
-    <div class="w-2/6 med:w-4/12 items-center justify-center hidden">
-        <div class="w-auto h-14 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
-            <div class="relative -left-4">
-                <img src=" {{ asset('/images/users/1.jpg') }} " alt="Avatar de l'utilisateur" class="h-16 border-4 border-borderColorLight rounded-full">
-            </div>
-            <div class="hidden md:inline md:relative pr-3">
-                <a href="" class="">
-                    <p id="name-id" class="font-bold">Mario Dupond</p>
-                    <p id="type-id" class='text-sm font-semibold'>Propriétaire</p> 
-                </a>                      
-            </div>
-        </div>
-    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     
-    <div class="w-2/6 flex lg:hidden justify-center items-center">
-        <i class="fa-solid fa-bars text-3xl cursor-pointer hover:text-txtBlueDark duration-700"></i>
-    </div>
+        <div class="flex w-2/6 med:w-4/12 items-center justify-center">
+            <div class="w-auto h-14 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
+                <div class="relative -left-4">
+                    <a href="{{ '/profile' }}">
+                        <img src=" {{ asset('/images/users/1.jpg') }} " alt="Avatar de l'utilisateur" class="h-16 border-4 border-borderColorLight rounded-full">
+                    </a>
+                </div>
+                <div class="hidden md:inline md:relative pr-3">
+                    <a href="{{'/profile'}}" class="">
+                        <p id="name-id" class="font-bold">{{app.user.firstname}} {{ app.user.lastname }}</p>
+                        <p id="type-id" class='text-sm font-semibold'>Propriétaire</p> 
+                    </a>                      
+                </div>
+            </div>
+            <a href="{{ path('logout') }}">
+                <i class="fa-solid fa-arrow-right-from-bracket text-2xl text-txtBlueDark cursor-pointer duration-500 hover:text-txtBlueLight"></i>
+            </a>
+        </div>
+    
+    {% else %}
 
-    <div class="hidden flex items-center justify-center absolute z-30 lg:relative h-20 w-full lg:w-2/6 top-20 lg:top-0 lg:flex bg-bgGolorGrayLight lg:bg-transparent menuBurger">
-        <a href="{{ path('signin')}}" class="btn btn-primary mr-4">Inscription</a>
-        <a href="{{ path('login' )}}" class="btn btn-secondary mr-4">Connexion</a>
-        <a href="{{ path('logout') }}">
-            <i class="fa-solid fa-arrow-right-from-bracket text-2xl text-txtBlueDark cursor-pointer duration-500 hover:text-txtBlueLight"></i>
-        </a>
-    </div>
+        <div class="w-2/6 flex lg:hidden justify-center items-center">
+            <i class="fa-solid fa-bars text-3xl cursor-pointer hover:text-txtBlueDark duration-700"></i>
+        </div>
+        
+        <div class="hidden flex items-center justify-center absolute z-30 lg:relative h-20 w-full lg:w-2/6 top-20 lg:top-0 lg:flex bg-bgGolorGrayLight lg:bg-transparent menuBurger">
+            <a href="{{ path('signin')}}" class="btn btn-primary mr-4">Inscription</a>
+            <a href="{{ path('login' )}}" class="btn btn-secondary mr-4">Connexion</a>
+            </div>
+
+    {% endif %}
+    
+
+
     
 </nav>

@@ -5,21 +5,24 @@
 {% block body %}
 
     <div class="flex flex-wrap flex-col justify-center items-center max-w-screen-2xl mt-44 lg:mt-48 h-full mx-auto mb-10">
-        <h2>Login</h2>
+        
+        <h2 class="text-2xl mb-8 text-center">Bonjour, pour accéder à votre profil, identifiez-vous</h2>
+        
+        <div class="flex justify-center bg-bgGolorGrayLight py-4 px-8 w-4/5 rounded-2xl">
+            <form action="{{ path('login') }}" method='post' class='flex flex-col items-center w-full'>
+                <label for="email">Votre email : </label>
+                <input type="text" name="_username" id="email" value=" {{ username }}" class="mt-2 mb-4 rounded-full w-4/5 max-w-xs">
 
-        <form action="{{ path('login') }}" method='post'>
-            <label for="email">Email</label>
-            <input type="text" name="_username" id="email" value=" {{ username }} ">
+                <label for="password">Votre mot de passe : </label>
+                <input type="password" name="_password" id="password" class="mt-2 mb-4 rounded-full w-4/5 max-w-xs">
 
-            <label for="password">Mot de passe</label>
-            <input type="password" name="_password" id="password">
+                <button class="btn btn-primary">Se connecter</button>
+            </form>
 
-            <button class="btn btn-primary">Se connecter</button>
-        </form>
-
-        {% if error %}
-            <div> {{ error.messageKey }} </div>
-        {% endif %}
+            {% if error %}
+                <div> {{ error.messageKey }} </div>
+            {% endif %}
+        </div>
         
     </div>
 
