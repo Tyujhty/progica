@@ -12,9 +12,9 @@
     
         <div class="flex w-2/6 md:w-6/12 items-center justify-end mr-8">
             <div class="w-auto h-16 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
-                <div class="relative -left-3 -top-0.5 h-14 w-14">
-                    <a href="{{ '/profile' }}">
-                        <img src=" {{ asset(app.user.avatar) }} " alt="Avatar de l'utilisateur" class="w-full border-4 border-borderColorLight rounded-full">
+                <div class="relative -left-3 h-16 w-16 flex">
+                    <a href="{{ '/profile' }}" class="flex">
+                        <img src=" {{ asset(app.user.avatar) }} " alt="Avatar de l'utilisateur" class=" w-fit object-cover border-4 border-borderColorLight rounded-full">
                     </a>
                 </div>
                 <div class="hidden md:inline md:relative pr-3">

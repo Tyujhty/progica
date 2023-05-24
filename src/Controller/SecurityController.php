@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\SearchType;
 use App\Form\UserType;
+use App\Service\UploadImageService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route('/signin', name: 'signin')]
-    public function signin(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
+    public function signin(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher, UploadImageService $uploadImageService): Response
     {
         $formSearch = $this->createForm((SearchType::class));
 
@@ -29,6 +30,13 @@ class SecurityController extends AbstractController
             
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
+            $avatar = $signinForm->get('avatarFile')->getData();
+
+            if($avatar) {
+                $user->setAvatar($uploadImageService->uploadProfileImage($avatar));
+            } else {
+                $user->setAvatar('/users/default-profile.png');
+            }
 
             $em->persist($user);
             $em->flush();
