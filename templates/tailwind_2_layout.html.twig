@@ -10,7 +10,6 @@
     {{- parent() -}}
 {%- endblock widget_attributes -%}
 
-
 {%- block checkbox_widget -%}
     <input type="checkbox" class="criteria hidden" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
 {%- endblock checkbox_widget -%}
@@ -19,3 +18,4 @@
     {%- set label_attr = label_attr|merge({ class: label_attr.class|default(label_class|default('labelFilter')) }) -%}
     {{- parent() -}}
 {%- endblock form_label -%}
+
