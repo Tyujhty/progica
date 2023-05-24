@@ -12,38 +12,41 @@
             <p><strong>Maximisez vos revenus</strong> en mettant votre gîte en location sur Progica. Rejoignez notre plateforme conviviale et atteignez des voyageurs du monde entier.</p>
         </div>
         <div class="bg-bgGolorGrayLight w-10/12 lg:w-8/12 py-4 px-0 lg:px-8 flex flex-col items-center rounded-2xl">
-            {{form_start(signinForm, {'attr': {'class': 'w-4/5 lg:w-2/4 text-center'}})}}
+            {{form_start(signinForm, {'attr': {'class': 'w-4/5 '}})}}
                 {{ form_row(signinForm.firstName, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{ form_row(signinForm.lastName, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{ form_row(signinForm.address, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{ form_row(signinForm.email, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{ form_row(signinForm.phone, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{ form_row(signinForm.password.first, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{ form_row(signinForm.password.second, {
-                    row_class: 'flex justify-between flex-col md:flex-row  items-center mb-4',
+                    row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
                 {{form_rest(signinForm)}}
+
+                <div class="text-center">
+                    <button class="btn btn-primary">S'inscrire</button>
+                </div>
             
-                <button class="btn btn-primary">S'inscrire</button>
             {{form_end(signinForm)}}
             
         </div>
