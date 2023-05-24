@@ -3,7 +3,27 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-    <div class="flex flex-wrap flex-col justify-center items-center max-w-screen-2xl mt-44 lg:mt-48 h-full mx-auto mb-10">
-        <h1>Page de profil de {{user.firstname}} {{ user.lastname}} </h1>
+    <div class="flex flex-wrap justify-end w-full lg:w-9/12 max-w-screen-2xl mt-44 lg:mt-52 h-full mx-auto mb-10">
+
+        {% include "profile/_sidebar.html.twig" %}
+        
+        <div class="w-full px-6 lg:w-9/12">
+            <h1 class="text-txtBlueDark text-center lg:text-left text-2xl lg:text-3xl mb-10 mt-8 lg:mt-0">Bonjour, je suis {{ user.firstname }} {{ user.lastname}} </h1>
+            <div class="mb-14">
+                <h2 class="text-xl font-medium text-txtGray mb-4">A propos</h2>
+                <div class="text-justify">
+                    <p>Je suis Marie Dupont, votre hôte passionnée à Dijon. En tant que propriétaire de gîtes, c'est avec joie que je vous accueille dans mes charmantes locations. Profitez d'un séjour authentique dans la magnifique région de Dijon, où je suis là pour rendre votre expérience inoubliable.</p>
+                    <p>En dehors de mon rôle en tant que propriétaire de gîtes, j'ai une passion pour la cuisine locale. Originaire de Dijon, je suis fière de partager mes recettes traditionnelles et mes conseils culinaires avec mes invités. Lorsque je ne suis pas en train de préparer de délicieux plats, vous me trouverez souvent en train d'explorer les vignobles voisins, étant une amatrice passionnée de vins. Ma connaissance de la région et ma volonté de faire découvrir ses trésors gastronomiques font de moi l'hôte idéal pour votre séjour à Dijon.</p>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-xl font-medium text-txtGray mb-4">Liste des gîtes de {{ user.firstname }}</h2>
+                <div class="flex flex-wrap justify-around">
+                    {% for shelter in shelters %}
+                        {% include "/profile/_shelterCardProfile.html.twig" %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

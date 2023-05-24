@@ -1,0 +1,25 @@
+<div class="w-full md:w-1/2 py-2 px-4 lg:px-8 mb-8 flex flex-col items-center">
+
+    <a href=" {{ path('gite_show', {'id' : shelter.id}) }} ">
+        <h2 class="mb-2 text-2xl"> {{ shelter.name }} </h2>
+        
+        <div class="overflow-clip h-44 rounded-3xl hover:opacity-80 transition-all">
+            <img src=" {{ shelter.image }}" alt="Image d'illustration du gîte" class="w-full">
+        </div>
+        
+    </a>
+
+    <div class="w-full px-2">
+        <div class="flex justify-between">
+            <p class="mt-1 font-medium"> <i class="fa-solid fa-location-dot text-lg text-bgColorYellow "></i> {{ shelter.town }} </p>
+            <div class="flex justify-around w-2/5">
+                <p class="mt-1"> <i class="fa-solid fa-house text-bgColorYellow"></i> {{ shelter.surface }} m²</p>
+                <p class="mt-1"> <i class="fa-solid fa-bed text-bgColorYellow"></i> {{ shelter.nbBeds }} </p>
+            </div>              
+        </div>
+
+        <p class="my-2 text-slate-700"> {{ shelter.description }} </p>
+        <p class="text-right">à partir de <span class="font-semibold">{{ shelter.price }}€</span> par nuit </p>
+    </div>
+
+</div>

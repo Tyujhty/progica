@@ -4,13 +4,13 @@
         <img src="{{ asset('/images/logo/logo-progica.png') }} " alt="Logo Progica" class="max-h-16">
     </a>
 
-    <div class="w-5/12 hidden md:flex items-center">
+    <div class="w-5/12 hidden lg:flex items-center">
         <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold text-txtBlueDark'>gîte</span> de rêve !</p>
     </div>
     
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     
-        <div class="flex w-2/6 med:w-4/12 items-center justify-center">
+        <div class="flex w-2/6 md:w-6/12 items-center justify-center">
             <div class="w-auto h-14 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
                 <div class="relative -left-4">
                     <a href="{{ '/profile' }}">

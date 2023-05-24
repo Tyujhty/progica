@@ -14,7 +14,8 @@ module.exports = {
       txtBlueLight: '#40ffec',
       txtGray: '#5f5F5F',
       txtGrayLight: '#E6E6E6',
-      borderColorLight: '#CBF3F0'
+      borderColorLight: '#CBF3F0',
+      borderColorDark: '#aaaaaa'
     },
     extend: {
       boxShadow: {
