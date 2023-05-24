@@ -10,11 +10,11 @@
     
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     
-        <div class="flex w-2/6 md:w-6/12 items-center justify-center">
-            <div class="w-auto h-14 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
-                <div class="relative -left-4">
+        <div class="flex w-2/6 md:w-6/12 items-center justify-end mr-8">
+            <div class="w-auto h-16 px-2 py-0 md:mr-5 md:border-4 rounded-full border-borderColorLight flex items-center">
+                <div class="relative -left-3 -top-0.5 h-14 w-14">
                     <a href="{{ '/profile' }}">
-                        <img src=" {{ asset('/images/users/1.jpg') }} " alt="Avatar de l'utilisateur" class="h-16 border-4 border-borderColorLight rounded-full">
+                        <img src=" {{ asset(app.user.avatar) }} " alt="Avatar de l'utilisateur" class="w-full border-4 border-borderColorLight rounded-full">
                     </a>
                 </div>
                 <div class="hidden md:inline md:relative pr-3">

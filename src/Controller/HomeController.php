@@ -54,6 +54,8 @@ class HomeController extends AbstractController
             
             if($shelters) {
                 $countShelters = count($shelters);
+                // /users/default-profile.png
+                // $this->addFlash('success', `Votre question a été ajoutée avec $countShelters`);
             }
         } else {
 

@@ -18,7 +18,16 @@
     <body>
         {% include "_partials/_header.html.twig" %}
         
+        {% for cat, list in app.flashes %}
+            {% for msg in list %}
+                <div class="flash flash-{{cat}} mt-48 absolute">
+                    {{msg}}
+                </div>
+            {% endfor %}
+        {% endfor %}
         <div class="app-content h-auto">
+        
+        
             {% block body %}{% endblock %}
         </div>
 
