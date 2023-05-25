@@ -23,7 +23,7 @@ services:
 
     App\Service\UploadImageService:
         arguments:
-            $avatarFolder: '%kernel.project_dir%/public/images/users'
+            $avatarFolder: '%kernel.project_dir%/public/users'
             $avatarFolderPublic: 'users'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

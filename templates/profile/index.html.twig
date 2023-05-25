@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="flex flex-col">
-                <h2 class="text-xl font-medium text-txtGray mb-4">Liste des gîtes de {{ user.firstname }}</h2>
+                <h2 class="text-xl font-medium text-txtGray mb-4">Gîtes de {{ user.firstname }}</h2>
                 <div class="flex flex-wrap justify-around">
                     {% for shelter in shelters %}
                         {% include "/profile/_shelterCardProfile.html.twig" %}

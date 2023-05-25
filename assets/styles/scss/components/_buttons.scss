@@ -2,6 +2,7 @@
     border-radius: 25px;
     font-weight: 500;
     padding: 10px 20px;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -17,6 +18,17 @@
     background-color: $bg-color-yellow;
     color: white;
     transition: $transition-smooth;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+.btn-third {
+    background-color: $text-blue-dark;
+    color: white;
+    font-weight: 500;
+    transition: $transition-smooth;
+    cursor: pointer;
 
     &:hover {
         opacity: .7;

@@ -19,10 +19,13 @@ class UploadImageService {
         $avatar->move($this->avatarFolderPublic, $filename);
 
         if($oldPicture) {
-            $this->filesystem->remove($this->avatarFolder .".". pathinfo($oldPicture, PATHINFO_BASENAME));
+            $oldPicturePath = $this->avatarFolder . "/" . pathinfo($oldPicture, PATHINFO_BASENAME);
+            if ($this->filesystem->exists($oldPicturePath)) {
+                $this->filesystem->remove($oldPicturePath);
+            }
         }
 
-        return $this->avatarFolderPublic ."/".$filename;
+        return $this->avatarFolderPublic."/".$filename;
     }
 }
 
