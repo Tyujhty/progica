@@ -12,48 +12,48 @@
             <p><strong>Maximisez vos revenus</strong> en mettant votre gîte en location sur Progica. Rejoignez notre plateforme conviviale et atteignez des voyageurs du monde entier.</p>
         </div>
         <div class="bg-bgGolorGrayLight w-10/12 lg:w-8/12 py-4 px-0 lg:px-8 flex flex-col items-center rounded-2xl">
-            {{form_start(signinForm, {'attr': {'class': 'w-4/5 '}})}}
-                {{ form_row(signinForm.firstName, {
+            {{form_start(signupForm, {'attr': {'class': 'w-4/5 '}})}}
+                {{ form_row(signupForm.firstName, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.lastName, {
+                {{ form_row(signupForm.lastName, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.address, {
+                {{ form_row(signupForm.address, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.email, {
+                {{ form_row(signupForm.email, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.phone, {
+                {{ form_row(signupForm.phone, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.password.first, {
+                {{ form_row(signupForm.password.first, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.password.second, {
+                {{ form_row(signupForm.password.second, {
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
-                {{ form_row(signinForm.avatarFile, {
+                {{ form_row(signupForm.avatarFile, {
                     label_class: 'mb-1',
                     row_class: 'flex flex-col mb-4',
                     widget_class: 'rounded'
                 })}}
 
-                {{form_rest(signinForm)}}
+                {{form_rest(signupForm)}}
 
                 <div class="text-center">
                     <button class="btn btn-primary">S'inscrire</button>
                 </div>
             
-            {{form_end(signinForm)}}
+            {{form_end(signupForm)}}
             
         </div>
     </div>

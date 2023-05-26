@@ -19,26 +19,21 @@ class HomeController extends AbstractController
     public function index(Request $request,SessionInterface $sessionInterface, ShelterSearchService $shelterSearchService, DateHandlerService $dateHandlerService): Response
     {   
         $user = $this->getUser();
-        $countShelters = 0;
-
+        
         $formSearch = $this->createForm(SearchType::class);
         $formSearch->handleRequest($request);
-
+        
         $criteria = $formSearch->getData();
         
         $shelters = $shelterSearchService->searchShelterByCriteria($criteria);
         
         $dateHandlerService->dateHandler($formSearch, $sessionInterface);
         
-        if($shelters) {            
-            $countShelters = count($shelters);
-        }
-        
         if ($request->get('ajax')) {
             return new JsonResponse([
                 'content' => $this->renderView('_partials/_content.html.twig', [
                     'shelters' => $shelters,
-                    'countShelters' => $countShelters
+                    'countShelters' => count($shelters)
                 ])
             ]);
         }

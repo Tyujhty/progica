@@ -16,21 +16,21 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/signin', name: 'signin')]
-    public function signin(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher, UploadImageService $uploadImageService): Response
+    #[Route('/signup', name: 'signup')]
+    public function signup(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher, UploadImageService $uploadImageService): Response
     {
         $formSearch = $this->createForm((SearchType::class));
 
         $user = new User();
 
-        $signinForm = $this->createForm(UserType::class, $user);
-        $signinForm->handleRequest($request);
+        $signupForm = $this->createForm(UserType::class, $user);
+        $signupForm->handleRequest($request);
 
-        if($signinForm->isSubmitted() && $signinForm->isValid()) {
+        if($signupForm->isSubmitted() && $signupForm->isValid()) {
             
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
-            $avatar = $signinForm->get('avatarFile')->getData();
+            $avatar = $signupForm->get('avatarFile')->getData();
 
             if($avatar) {
                 $user->setAvatar($uploadImageService->uploadProfileImage($avatar));
@@ -44,9 +44,9 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('login');
         }
 
-        return $this->render('security/signin.html.twig', [
+        return $this->render('security/signup.html.twig', [
             'formSearch' => $formSearch->createView(),
-            'signinForm' => $signinForm->createView()    
+            'signupForm' => $signupForm->createView()    
         ]);
     }
  
@@ -83,7 +83,7 @@ class SecurityController extends AbstractController
 
 
 
-    //     return $this->render('security/signin.html.twig', [
+    //     return $this->render('security/signup.html.twig', [
             
     //     ]);
     // }
