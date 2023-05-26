@@ -48,7 +48,6 @@ class ProfileController extends AbstractController
                 }
                 $em->flush();
             }
-
         };
 
         return $this->render('profile/index.html.twig', [
