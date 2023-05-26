@@ -1,6 +1,6 @@
 const url = new URL(window.location.href);
 
-if (url.pathname.includes("/gite/")) {
+if (url.pathname.includes("/shelter/")) {
     window.onload = () => {
         const pickerDateForm = document.querySelector("#pickerDiv");
         const formPickerDateInputs = document.querySelectorAll(".datePicker");

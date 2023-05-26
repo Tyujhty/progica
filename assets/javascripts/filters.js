@@ -34,8 +34,10 @@ window.onload = () => {
 
       const url = new URL(window.location.href);
 
-      // Exclure l'URL "/gite/" de la requête Ajax
-      if (!url.pathname.includes("/gite/")) {
+      // Exclure l'URL "/shelter/" de la requête Ajax
+      if (!url.pathname.includes("/shelter/")) {
+
+        console.log('ok')
         fetch(url.pathname + '?' + params.toString() + "&ajax=1", {
           headers: {
             "X-Requested-With": "XMLHttpRequest"

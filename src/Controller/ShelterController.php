@@ -12,10 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class GiteController extends AbstractController
+class ShelterController extends AbstractController
 {
-    #[Route('/gite/{id}', name: 'gite_show')]
-    public function giteCard(Request $request, Shelter $shelter, EntityManagerInterface $em, int $id, SessionInterface $sessionInterface): Response
+    #[Route('/shelter/{id}', name: 'shelter_show')]
+    public function shelterCard(Request $request, Shelter $shelter, EntityManagerInterface $em, int $id, SessionInterface $sessionInterface): Response
     {
         $user = $this->getUser();
         $shelter = $em->getRepository(Shelter::class)->find($id);
@@ -66,7 +66,7 @@ class GiteController extends AbstractController
             ]);
         }
 
-        return $this->render('gite/index.html.twig', [
+        return $this->render('shelter/index.html.twig', [
             'formSearch' => $formSearch->createView(),
             'user' => $user,
             'shelter' => $shelter,
