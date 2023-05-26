@@ -16,7 +16,7 @@
     {{ form_end(formProfile) }}
 
     <div class="">
-        <h2 class="my-4">Quelques informations sur moi</h2>
+        <h2 class="my-4 font-semibold text-txtBlueDark">Quelques informations sur moi</h2>
         <p><i class="fa-solid fa-location-dot mr-2 text-lg text-txtGray mb-2"></i> {{ user.address }} </p>
         <p><i class="fa-solid fa-envelope mr-2 text-lg text-txtGray mb-2"></i>{{user.email}}</p>
         <p><i class="fa-solid fa-phone mr-2 text-lg text-txtGray mb-2"></i> {{ user.phone }} </p>
@@ -25,7 +25,7 @@
     <hr class="hidden lg:block w-11/12 my-3">
 
     <div class="hidden lg:block w-full text-center">
-        <h2 class="my-2">Mes gîtes</h2>
+        <h2 class="my-2 font-semibold text-txtBlueDark">Mes gîtes</h2>
         <p>Location disponible : {{ shelters|length }} {{ shelters|length > 1 ? 'gîtes' : 'gîte' }}</p>
         </p>
     </div>
