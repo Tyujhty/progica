@@ -28,7 +28,6 @@ class ProfileController extends AbstractController
         $user = $this->getUser();
         $shelter = $shelterRepository->findBy(['user' => $user]);
 
-
         $formProfile = $this->createForm(UserType::class, $user);
         $formProfile->remove('firstName');
         $formProfile->remove('lastName');

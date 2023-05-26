@@ -1,6 +1,7 @@
 // Gestion du menu burger en responsive
 const btnBurger = document.querySelector('.fa-bars');
 const menuContainer = document.querySelector('.menuBurger');
+
 const appContentContainer = document.querySelector('.app-content');
 
 if(btnBurger) {

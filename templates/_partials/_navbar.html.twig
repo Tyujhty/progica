@@ -1,4 +1,4 @@
-<nav class="h-20 flex justify-between md:justify-around">
+<nav class="h-20 border-b-2 border-bgGolorGrayLight flex justify-between md:justify-around">
 
     <a href="{{'/'}}" class="w-2/6 md:w-3/12 h-20 ml-4 md:ml-0 flex items-center justify-center">
         <img src="{{ asset('/images/logo/logo-progica.png') }} " alt="Logo Progica" class="max-h-16">
@@ -19,8 +19,8 @@
                 </div>
                 <div class="hidden md:inline md:relative pr-3">
                     <a href="{{'/profile'}}" class="">
-                        <p id="name-id" class="font-bold">{{app.user.firstname}} {{ app.user.lastname }}</p>
-                        <p id="type-id" class='text-sm font-semibold'>Propriétaire</p> 
+                        <p class="font-bold text-txtBlueDark">{{app.user.firstname}} {{ app.user.lastname }}</p>
+                        <p class='text-sm font-semibold text-txtGray'>Propriétaire</p> 
                     </a>                      
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <i class="fa-solid fa-bars text-3xl cursor-pointer hover:text-txtBlueDark duration-700"></i>
         </div>
         
-        <div class="hidden flex items-center justify-center absolute z-30 lg:relative h-20 w-full lg:w-2/6 top-20 lg:top-0 lg:flex bg-bgGolorGrayLight lg:bg-transparent menuBurger">
+        <div class="hidden flex items-center justify-center absolute z-50 lg:relative h-20 w-full lg:w-2/6 top-20 lg:top-0 lg:flex bg-bgGolorGrayLight lg:bg-transparent shadow-shadowFilters menuBurger ">
             <a href="{{ path('signup')}}" class="btn btn-primary mr-4">Inscription</a>
             <a href="{{ path('login' )}}" class="btn btn-secondary mr-4">Connexion</a>
             </div>

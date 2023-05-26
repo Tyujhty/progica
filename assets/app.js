@@ -15,7 +15,8 @@ import './bootstrap';
 import 'tw-elements';
 
 // JS import
-import "./javascripts/filters";
+import "./javascripts/toggleFilters";
+import "./javascripts/ajaxRequest";
 import "./javascripts/datePickerCalculPrice";
 import "./javascripts/dynamicStyleFilterSelection";
 import "./javascripts/toggleSearchBar";

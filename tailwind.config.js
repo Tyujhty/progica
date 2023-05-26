@@ -17,12 +17,15 @@ module.exports = {
       borderColorLight: '#CBF3F0',
       borderColorDark: '#aaaaaa'
     },
+    fontFamily: {
+      'sans': ['Roboto']
+    },
     extend: {
       boxShadow: {
         'shadowFilters': 'rgba(0, 0, 0, 0.45) 0px 15px 15px -21px'
       },
       height: {
-        '35%': '35%'
+        '32%': '32%'
       },
       margin: {
         '20rem': '20rem'
