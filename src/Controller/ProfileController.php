@@ -24,17 +24,18 @@ class ProfileController extends AbstractController
     {
 
         $formSearch = $this->createForm((SearchType::class));
-
+        
         $user = $this->getUser();
         $shelter = $shelterRepository->findBy(['user' => $user]);
-
+        
         $formProfile = $this->createForm(UserType::class, $user);
-        $formProfile->remove('firstName');
-        $formProfile->remove('lastName');
-        $formProfile->remove('address');
-        $formProfile->remove('email');
-        $formProfile->remove('phone');
-        $formProfile->remove('password');
+        
+        $fieldsToRemove = ['firstName', 'lastName', 'address', 'email', 'phone', 'password'];
+        
+        foreach ($fieldsToRemove as $field) {
+            $formProfile->remove($field);
+        }
+        
         $formProfile->handleRequest($request);
         
         if ($formProfile->isSubmitted()&& $formProfile->isValid()) {
