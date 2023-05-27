@@ -24,6 +24,7 @@ class SecurityController extends AbstractController
         $user = new User();
 
         $signupForm = $this->createForm(UserType::class, $user);
+        $signupForm->remove('description');
         $signupForm->handleRequest($request);
 
         if($signupForm->isSubmitted() && $signupForm->isValid()) {
@@ -78,13 +79,4 @@ class SecurityController extends AbstractController
         
     }
 
-    // public function searchShelter(Request $request)
-    // {
-
-
-
-    //     return $this->render('security/signup.html.twig', [
-            
-    //     ]);
-    // }
 }

@@ -22,3 +22,4 @@ import "./javascripts/dynamicStyleFilterSelection";
 import "./javascripts/toggleSearchBar";
 import './javascripts/toggleBurgerMenu';
 import './javascripts/toggleAvatarUpdate';
+import './javascripts/toggleEditDescriptionProfile';
