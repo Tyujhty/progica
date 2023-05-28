@@ -113,7 +113,7 @@ public function searchSheltersByCriteria($criteria): array
 
     // Filtre par la ville sélectionnée 
     if (isset($criteria['town'])) {
-        // Ajoute une condition pour filtrer par l'ID de la ville
+        // Ajoute une condition pour filtrer par l'Id de la ville
         $andConditions[] = $query->expr()->eq('s_town.id', $criteria['town']->getId());
     }
     
@@ -127,7 +127,7 @@ public function searchSheltersByCriteria($criteria): array
 
     // Vérifie si le critère "interior" est défini et s'il contient des éléments
     if (isset($criteria['interior']) && $criteria['interior']->count() > 0) {
-         // Récupère les identifiants des équipements intérieurs pour le filtrage
+         // Récupère les identifiants des équipements intérieurs pour le filtrage dans un tableau
         $interiorIds = $criteria['interior']->map(function ($interior) {
             return $interior->getId();
         })->toArray();

@@ -1,3 +1,5 @@
+//affichage du input d'édition de la description
+
 if (window.location.pathname.includes("/profile")) {
 
     const btnEditDescription = document.querySelector('.editDesc');
