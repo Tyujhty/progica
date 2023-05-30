@@ -33,13 +33,6 @@ class HomeController extends AbstractController
         
         if ($request->get('ajax')) {           
 
-            //Gérer le retour sur les résultats depuis shelter
-            $criteria = $request->query->all();
-            $request->query->remove('ajax');
-            $criteria = $request->query->all();
-
-            $sessionInterface->set('ajaxResults', $criteria);
-
             return new JsonResponse([
                 'content' => $this->renderView('_partials/_content.html.twig', [
                     'criteria' => $criteria,
