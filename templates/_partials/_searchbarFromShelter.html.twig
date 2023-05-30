@@ -1,0 +1,90 @@
+{% form_theme formSearch 'tailwind_2_layout.html.twig' %}
+
+<div class="h-28 lg:h-20 fixed top-20 w-full z-30 bg-bgGolorGrayLight flex justify-center items-center">
+
+    <div class="flex btnSearchContainer flex-col lg:flex-row">
+        <a href="{{ previousUrl }}" class="btn btn-primary mb-2 lg:mb-0 "><i class="fa-solid fa-rotate-left lg:text-lg mr-2"></i>Retour à mes résultas de recherches</a>
+        <button class="btn btn-secondary btnNewSearch"><i class="fa-solid fa-magnifying-glass lg:text-lg mr-2"></i>Effectuer une nouvelle recherche</button>   
+    </div>
+
+    <div class="hidden w-full flex justify-center items-center formSearchContainer">
+        <div class="hidden xl:inline text-txtGray">
+            <p>Je recherche un gîte</p>
+        </div>
+        
+        <div class="w-full md:max-w-screen-sm flex xl:hidden items-center justify-center">
+            <button class="btn-search flex items-center">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="absolute left-1/2 -translate-x-2/4">
+                    <p class="">Je recherche un gîte</p>
+                    <small class="font-light">par région, département ou ville</small>
+                </div>
+            </button>
+        </div>
+
+        <div id="container-search" class="hidden xl:flex justify-center items-center h-full ml-6">
+            {{ form_start(formSearch) }}
+                <div class="flex items-center">
+                    
+                    <p class="hidden text-txtBlueDark font-medium text-xl">Je recherche ma destination</p>
+                    <i class="hidden fa-regular fa-circle-xmark"></i>
+
+                    {{ form_row(formSearch.region, {
+                        widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+                    })}}
+                    {{ form_row(formSearch.department, {
+                        widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+                    })}}
+                    {{ form_row(formSearch.town, {
+                        widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+                    })}}
+
+                    <div class="hidden xl:flex xl:items-center">
+                        {% if app.request.attributes.get('_route') == 'home' %}
+                            <span class='mr-4'>du </span>
+
+                            {{ form_row(formSearch.start, {
+                                widget_class: 'text-txtGray rounded-lg criteria'
+                            }) }}
+
+                            <span class='mx-4'> au </span>
+                            
+                            {{ form_row(formSearch.end, {
+                                widget_class: 'text-txtGray rounded-lg mr-4 criteria'
+                            }) }}
+
+                        {% else %}
+
+                            <span class='mr-4 hidden'>du </span>
+
+                            {{ form_row(formSearch.start, {
+                                widget_class: 'text-txtGray rounded-lg criteria hidden'
+                            }) }}
+
+                            <span class='mx-4 hidden'> au </span>
+                            
+                            {{ form_row(formSearch.end, {
+                                widget_class: 'text-txtGray rounded-lg mr-4 criteria hidden'
+                            }) }}
+                
+                        {% endif %}                 
+                    </div>
+        
+                    <button class="hidden xl:inline font-bold btn btn-primary btn-filter">+ de filtres</button>
+                   
+                    <button type="submit" class="font-bold btn btn-secondary ml-4">Rechercher</button>
+
+                    <div class="absolute top-3 right-6 hidden lg:flex items-center">
+                        <i class="fa-regular fa-circle-xmark cursor-pointer text-2xl text-txtGray mr-1 cancelSearch"></i>
+                        <span class=" text-xs">Annuler</span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include "_partials/_filters.html.twig" %}
+
+{{ form_end(formSearch) }}
+

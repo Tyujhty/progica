@@ -89,8 +89,7 @@ class SearchType extends AbstractType
     {
         $resolver->setDefaults([
             'attr' => ['id' => 'searchForm'],
-            'method' => 'GET',
-            'crsf_protection' => false
+            'method' => 'GET'
         ]);
     }
 }

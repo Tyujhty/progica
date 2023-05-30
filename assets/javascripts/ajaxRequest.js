@@ -5,7 +5,7 @@ window.onload = () => {
     const searchFormSelect = document.querySelectorAll(".criteria");
   
     searchFormSelect.forEach(select => {
-      select.addEventListener('change', () => {
+      select.addEventListener('change', async () => {
   
         const form = new FormData(searchForm);
         const params = new URLSearchParams();
@@ -15,22 +15,28 @@ window.onload = () => {
         });
   
         const url = new URL(window.location.href);
-  
-        // Exclure l'URL "/shelter/" de la requête Ajax
-        if (!url.pathname.includes("/shelter/")) {
-  
-          fetch(url.pathname + '?' + params.toString() + "&ajax=1", {
-            headers: {
-              "X-Requested-With": "XMLHttpRequest"
-            }
-          })
-          .then(response => response.json())
-          .then(data => {
+          try {
+
+            const response = await fetch(url.pathname + '?' + params.toString() + "&ajax=1", {
+
+              headers: {
+                "X-Requested-With": "XMLHttpRequest"
+              }
+
+            });
+
+            const data = await response.json();
             const content = document.querySelector('#content');
             content.innerHTML = data.content;
-          })
-          .catch(e => alert(e));
-        }
+
+            // Modifier l'URL dans l'historique de navigation
+            const newUrl = url.pathname + '?' + params.toString();
+            window.history.pushState({ url: newUrl }, '', newUrl);
+          
+          } catch (error) {
+            console.log(error)
+          }
+        
       });
     });
   };

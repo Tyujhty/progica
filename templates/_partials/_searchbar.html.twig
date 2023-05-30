@@ -1,6 +1,12 @@
 {% form_theme formSearch 'tailwind_2_layout.html.twig' %}
 
-<div class="h-20 fixed top-20 w-full z-30 bg-bgGolorGrayLight flex justify-center items-center">
+{% if app.request.attributes.get('_route') == 'shelter_show' %}
+
+    {% include "_partials/_searchbarFromShelter.html.twig" %}
+
+{% else %}
+    
+    <div class="h-20 fixed top-20 w-full z-30 bg-bgGolorGrayLight flex justify-center items-center">
     
     <div class="hidden xl:inline text-txtGray">
         <p>Je recherche un gîte</p>
@@ -66,17 +72,16 @@
       
                 <button class="hidden xl:inline font-bold btn btn-primary btn-filter">+ de filtres</button>
                 
-                {% if app.request.attributes.get('_route') == 'shelter_show' %}
-                    
-                    <button type="submit" class="font-bold btn btn-secondary ml-4">Rechercher</button>
-
-                {% endif %}
-                
             </div>
+        </div>
     </div>
-</div>
 
-{% include "_partials/_filters.html.twig" %}
+    {% include "_partials/_filters.html.twig" %}
 
-{{ form_end(formSearch) }}
+    {{ form_end(formSearch) }}
+
+{% endif %}
+
+
+
 

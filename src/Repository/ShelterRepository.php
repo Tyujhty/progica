@@ -127,7 +127,7 @@ public function searchSheltersByCriteria($criteria): array
 
     // Vérifie si le critère "interior" est défini et s'il contient des éléments
     if (isset($criteria['interior']) && $criteria['interior']->count() > 0) {
-         // Récupère les identifiants des équipements intérieurs pour le filtrage dans un tableau
+         // Récupère les identifiants des équipements intérieurs pour le filtrage dans un tableau, La fonction anonyme est utilisée pour effectuer une opération spécifique sur chaque élément de la collection
         $interiorIds = $criteria['interior']->map(function ($interior) {
             return $interior->getId();
         })->toArray();
@@ -156,7 +156,7 @@ public function searchSheltersByCriteria($criteria): array
     if (!empty($andConditions)) {
         $query->andWhere(call_user_func_array([$query->expr(), 'andX'], $andConditions));
     }
-
+    
     return $query
         ->getQuery()
         ->getResult();

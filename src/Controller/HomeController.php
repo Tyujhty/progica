@@ -13,13 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function index(Request $request,SessionInterface $sessionInterface, ShelterSearchService $shelterSearchService, DateHandlerService $dateHandlerService): Response
     {   
         $user = $this->getUser();
-        
+
         $formSearch = $this->createForm(SearchType::class);
         $formSearch->handleRequest($request);
         
@@ -28,20 +29,30 @@ class HomeController extends AbstractController
         $shelters = $shelterSearchService->searchShelterByCriteria($criteria);
         
         $dateHandlerService->dateHandler($formSearch, $sessionInterface);
+
         
-        if ($request->get('ajax')) {
+        if ($request->get('ajax')) {           
+
+            //Gérer le retour sur les résultats depuis shelter
+            $criteria = $request->query->all();
+            $request->query->remove('ajax');
+            $criteria = $request->query->all();
+
+            $sessionInterface->set('ajaxResults', $criteria);
+
             return new JsonResponse([
                 'content' => $this->renderView('_partials/_content.html.twig', [
+                    'criteria' => $criteria,
                     'shelters' => $shelters,
-                    'countShelters' => count($shelters)
-                ])
-            ]);
+                    'countShelters' => count($shelters),
+                    ])
+                ]);
         }
 
         return $this->render('home/index.html.twig', [
             'formSearch' => $formSearch->createView(),
             'shelters' => $shelters,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }
