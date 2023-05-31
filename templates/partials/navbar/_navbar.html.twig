@@ -1,0 +1,24 @@
+<nav class="h-20 border-b-2 border-bgGolorGrayLight flex justify-between md:justify-around">
+
+    <a href="{{'/'}}" class="w-2/6 md:w-3/12 h-20 ml-4 md:ml-0 flex items-center justify-center">
+        <img src="{{ asset('/images/logo/logo-progica.png') }} " alt="Logo Progica" class="max-h-16">
+    </a>
+
+    <div class="w-5/12 hidden lg:flex items-center">
+        <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold text-txtBlueDark'>gîte</span> de rêve !</p>
+    </div>
+    
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        {% include "partials/navbar/_navbar_profile.html.twig" %}
+    
+    {% else %}
+
+        {% include "partials/navbar/_navbar_auth_buttons.html.twig" %}
+
+    {% endif %}
+    
+
+
+    
+</nav>

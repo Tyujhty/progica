@@ -1,0 +1,26 @@
+{% if interiorEquipments is not empty  and exteriorEquipments is not empty  and services is not empty %}
+    <hr class="mb-4">
+    <div class="bg-bgGolorGrayLight py-2 px-4 rounded-2xl mb-4">
+        
+        <h2 class="text-2xl mb-4 text-txtBlueDark font-medium">Ce que propose ce logement</h2>
+        
+        {# Boucle combinant intérieur et extérieur pour itérer sur les équipements. #}
+        {% for equipment in interiorEquipments|merge(exteriorEquipments) %}
+            <div class="flex items-center mb-4">
+                <img class="w-7 mr-2" src="{{ equipment.icones }}" alt="Icône de l'équipement">
+                <p>{{ equipment.name }}</p>
+            </div>
+        {% endfor %}
+
+        <hr class="mb-4">
+        <h2 class="text-2xl mb-4 text-txtBlueDark font-medium">Les services proposés dans ce logement</h2>
+
+        {% for service in services %}
+            <div class="flex items-center mb-4">
+                <img class="w-7 mr-2" src="{{ service.icones }}" alt="Icône du service">
+                <p>{{ service.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endif %}

@@ -41,7 +41,7 @@ class ShelterController extends AbstractController
             $dateHandlerService->dateHandler($formSearch, $sessionInterface);
             
             return new JsonResponse([
-                'content' => $this->renderView('_partials/_contentDateSearch.html.twig', [
+                'content' => $this->renderView('shelter/_shelter_dynamic_price_summary.html.twig', [
                     'shelter' => $shelter
                     ])
                 ]);
@@ -49,7 +49,7 @@ class ShelterController extends AbstractController
         
         $previousUrl = $requestStack->getMainRequest()->headers->get('referer');
 
-        return $this->render('shelter/index.html.twig', [
+        return $this->render('shelter/shelter_show.html.twig', [
             'formSearch' => $formSearch->createView(),
             'user' => $user,
             'shelter' => $shelter,

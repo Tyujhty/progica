@@ -1,0 +1,40 @@
+{{ form_row(formSearch.region, {
+    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+})}}
+{{ form_row(formSearch.department, {
+    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+})}}
+{{ form_row(formSearch.town, {
+    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+})}}
+
+<div class="hidden xl:flex xl:items-center">
+    {% if app.request.attributes.get('_route') == 'home' %}
+        <span class='mr-4'>du </span>
+
+        {{ form_row(formSearch.start, {
+            widget_class: 'text-txtGray rounded-lg criteria'
+        }) }}
+
+        <span class='mx-4'> au </span>
+        
+        {{ form_row(formSearch.end, {
+            widget_class: 'text-txtGray rounded-lg mr-4 criteria'
+        }) }}
+
+    {% else %}
+
+        <span class='mr-4 hidden'>du </span>
+
+        {{ form_row(formSearch.start, {
+            widget_class: 'text-txtGray rounded-lg criteria hidden'
+        }) }}
+
+        <span class='mx-4 hidden'> au </span>
+        
+        {{ form_row(formSearch.end, {
+            widget_class: 'text-txtGray rounded-lg mr-4 criteria hidden'
+        }) }}
+
+    {% endif %}                 
+</div>

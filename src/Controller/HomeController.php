@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Form\SearchType;
+use App\Repository\ShelterRepository;
 use App\Service\DateHandlerService;
 use App\Service\ShelterSearchService;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,7 +18,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(Request $request,SessionInterface $sessionInterface, ShelterSearchService $shelterSearchService, DateHandlerService $dateHandlerService): Response
+    public function index(Request $request,SessionInterface $sessionInterface, ShelterSearchService $shelterSearchService, DateHandlerService $dateHandlerService, ShelterRepository $shelterRepository): Response
     {   
         $user = $this->getUser();
 
@@ -30,14 +31,16 @@ class HomeController extends AbstractController
         
         $dateHandlerService->dateHandler($formSearch, $sessionInterface);
 
+        $totalShelters = $shelterRepository->count([]);
         
         if ($request->get('ajax')) {           
 
             return new JsonResponse([
-                'content' => $this->renderView('_partials/_content.html.twig', [
+                'content' => $this->renderView('home/_home_search_results_dynamic.html.twig', [
                     'criteria' => $criteria,
                     'shelters' => $shelters,
                     'countShelters' => count($shelters),
+                    'totalShelters' => $totalShelters
                     ])
                 ]);
         }
@@ -48,4 +51,6 @@ class HomeController extends AbstractController
             'user' => $user,
         ]);
     }
+    
 }
+

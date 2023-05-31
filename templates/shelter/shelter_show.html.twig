@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include "partials/searchbar/searchbar.html.twig" %}
+
+	<div class="flex mt-48 mb-10">
+	
+		<div class="w-full mt-20rem lg:mt-0 lg:w-9/12 mx-3">
+			
+			<div class="flex flex-col w-full lg:w-3/4 mx-auto mb-4">
+				<h1 class="text-3xl mb-6 font-semibold">{{ shelter.name }}</h1>
+				<p class=" text-lg"><i class="fa-solid fa-location-dot mr-2"></i>{{ shelter.town }}</p>
+			</div>
+
+			<div class="w-full lg:w-3/4 lg:mx-auto py-2">
+				<img src="{{ shelter.image }}" alt="Photographie illustration gîte" class="rounded-3xl">
+			</div>
+
+			<div class="w-full lg:w-3/4 mx-auto py-4">
+				<p class="text-xl font-semibold">Chez <a href="{{ path('profile_user', {'id' : shelter.user.id}) }}">{{shelter.user.fullname}}</a></p>
+				
+				<div class="flex text-lg mb-8">
+					<p>{{ shelter.surface}} m²</p>
+					<span class="mx-1"> · </span>
+					<p>{{ shelter.nbBedrooms}} {{ shelter.nbBedrooms > 1 ? ' chambres' : ' chambre' }}</p>
+					<span class="mx-1"> · </span>
+					<p>{{ shelter.nbBeds}}{{ shelter.nbBeds > 1 ? 'lits' : 'lit' }}</p>
+				</div>
+
+				{% if shelter.acceptAnimals == 1 %}
+					<p><i class="fa-solid fa-paw text-xl mr-2 mb-2"></i>Les animaux sont acceptés</p>
+				{% endif %}
+				
+				<hr class="mb-4">
+
+				<h2 class="mb-2 text-2xl text-txtBlueDark font-medium">Description du logement</h2>
+				<p class="mb-4">{{ shelter.description }}</p>
+
+				{% include "shelter/_shelter_equipments_services.html.twig" %}
+
+				<div class="bg-bgGolorGrayLight py-4 px-4 rounded-2xl">
+
+					<h2 class="text-2xl mb-2 text-txtBlueDark font-medium">Administré par {{ shelter.manager.fullname }}</h2>
+					<p>Pour toute question concernant notre gîte, n'hésitez pas à contacter notre responsable <strong>{{ shelter.manager.firstname }}</strong> qui se fera un plaisir de vous aider.<br><br> Vous pouvez le joindre par courrier électronique.</p>
+
+					<div class="mt-4 text-center">
+						<a href="mailto:{{shelter.manager.mail}}" class="btn btn-secondary">Poser des questions</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		{% include "shelter/_shelter_dynamic_price.html.twig" %}
+
+	</div>
+
+{% endblock %}

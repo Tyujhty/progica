@@ -1,0 +1,19 @@
+<div class="flex flex-col items-end text-justify whitespace-pre-line text-txtGray">
+    {{ user.description ? 
+    '<button class="mb-2 text-txtBlueDark text-lg editDesc"><i class="fa-solid fa-pen-to-square mr-2"></i>Modifier</button>' :  
+    '<button class="mb-2 text-txtBlueDark text-lg editDesc"><i class="fa-solid fa-pen-to-square mr-2"></i>Ajouter</button>' }}
+
+    <form action="" method ='POST' class="w-full hidden editFormRow">                    
+        {{ form_row(editFormProfile.description, {
+                'attr': {
+                'class': 'w-full rounded resize-none',
+                'rows' : 10,
+                }
+        }) }}
+        {{ form_widget(editFormProfile._token) }}
+
+        <button class='btn btn-secondary relative -top-10'>Sauvegarder</button>
+    </form>
+    
+    <p class='userDescContainer'> {{ user.description }} </p>
+</div>

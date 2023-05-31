@@ -19,14 +19,14 @@ class ProfileController extends AbstractController
 {
     /** @var User $user */
     
-    #[Route('/profile', name: 'profile')]
+    #[Route('/profile', name: 'profile_current_user')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function profileShow(ShelterRepository $shelterRepository, Request $request, UploadImageService $uploadImageService, EntityManagerInterface $em): Response
     {        
-        $user = $this->getUser();
-        $shelter = $shelterRepository->findBy(['user' => $user]);
+        $currentUser = $this->getUser();
+        $shelter = $shelterRepository->findBy(['user' => $currentUser]);
         
-        $formProfile = $this->createForm(UserType::class, $user);
+        $formProfile = $this->createForm(UserType::class, $currentUser);
         
         $editFormProfile = $this->createFormBuilder()
         ->add('description', TextareaType::class, [
@@ -50,19 +50,19 @@ class ProfileController extends AbstractController
             $avatarFile = $formProfile->get('avatarFile')->getData();
 
             if($avatarFile) {
-                if($user instanceof User) {
-                $user->setAvatar($uploadImageService->uploadProfileImage($avatarFile, $user->getAvatar() ));
+                if($currentUser instanceof User) {
+                    $currentUser->setAvatar($uploadImageService->uploadProfileImage($avatarFile, $currentUser->getAvatar() ));
                 }
                 $em->flush();
             }
         };
 
-        $this->editDescription($user, $editFormProfile, $request, $em);
+        $this->editDescription($currentUser, $editFormProfile, $request, $em);
 
-        return $this->render('profile/index.html.twig', [
+        return $this->render('profile/profile.html.twig', [
             'formProfile' => $formProfile->createView(),
             'editFormProfile' => $editFormProfile->createView(),
-            'user' => $user,
+            'user' => $currentUser,
             'shelters' => $shelter
         ]);
     }
@@ -90,16 +90,15 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profile/{id}', name: 'profile_user')]
-    // #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function userProfile(User $user): Response
     {
         $currentUser = $this->getUser();
 
         if ($currentUser === $user) {
-            return $this->redirectToRoute('profile');
+            return $this->redirectToRoute('profile_current_user');
         }
 
-        return $this->render('profile/_show.html.twig', ['user' => $user, 'currentUser' => $currentUser]);
+        return $this->render('profile/profile_public.html.twig', ['user' => $user, 'currentUser' => $currentUser]);
 
     }
 }

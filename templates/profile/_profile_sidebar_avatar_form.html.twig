@@ -1,0 +1,13 @@
+{% if user == app.user %}
+    <btn class="btn-third py-2 px-4 rounded mt-2 btnChangeAvatar">Changer mon avatar</btn>
+
+    {{ form_start(formProfile, {'attr': {'class': 'flex flex-col items-center mt-4 formUpdateAvatar hidden'}}) }}
+        {{ form_row(formProfile.avatarFile, {
+            label_class: 'hidden',
+            row_class: 'flex flex-col w-10/12 mb-4 max-w-xs'
+        }) }}
+
+        <button class="btn btn-secondary" type="submit">Enregistrer</button>
+        
+    {{ form_end(formProfile) }}
+{% endif %}

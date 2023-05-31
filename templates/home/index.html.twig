@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Progica - Echappez à la routine, louez un gîte de rêve{% endblock %}
-
 {% block body %}
 
-    {% include "_partials/_searchbar.html.twig" %}
+    {% include "partials/searchbar/searchbar.html.twig" %}
+
     <div id="content" class="flex flex-wrap max-w-screen-2xl mt-44 lg:mt-48 mx-auto mb-10">
-        {% include "_partials/_content.html.twig" %}    
+        {% include "home/_home_search_results_dynamic.html.twig" %}    
     </div>
 
 {% endblock %}

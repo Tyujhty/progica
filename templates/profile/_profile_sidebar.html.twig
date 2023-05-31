@@ -1,21 +1,12 @@
 <div class=" lg:fixed lg:bottom-auto lg:left-12 flex flex-col items-center w-full lg:w-3/12 py-4 px-8 lg:border-2 z-20 lg:bg-bgGolorGrayLight lg:rounded-3xl border-bgGolorGrayLight ">
+    
     <div class="w-40 h-40 flex">
         <img src="{{ asset(user.avatar) }}" alt="Avatar de l'utilisateur" class="w-full object-cover border-4 rounded-full border-borderColorLight">
     </div>
+    
+    {% include "profile/_profile_sidebar_avatar_form.html.twig" %}
 
-    <btn class="btn-third py-2 px-4 rounded mt-2 btnChangeAvatar">Changer mon avatar</btn>
-
-    {{ form_start(formProfile, {'attr': {'class': 'flex flex-col items-center mt-4 formUpdateAvatar hidden'}}) }}
-        {{ form_row(formProfile.avatarFile, {
-            label_class: 'hidden',
-            row_class: 'flex flex-col w-10/12 mb-4 max-w-xs'
-        }) }}
-
-        <button class="btn btn-secondary" type="submit">Enregistrer</button>
-        
-    {{ form_end(formProfile) }}
-
-    <div class="">
+    <div>
         <h2 class="my-4 font-semibold text-txtBlueDark">Quelques informations sur moi</h2>
         <p><i class="fa-solid fa-location-dot mr-2 text-lg text-txtGray mb-2"></i> {{ user.address }} </p>
         <p><i class="fa-solid fa-envelope mr-2 text-lg text-txtGray mb-2"></i>{{user.email}}</p>
@@ -26,7 +17,7 @@
 
     <div class="hidden lg:block w-full text-center">
         <h2 class="my-2 font-semibold text-txtBlueDark">Mes gîtes</h2>
-        <p>Location disponible : {{ shelters|length }} {{ shelters|length > 1 ? 'gîtes' : 'gîte' }}</p>
+        <p>Location disponible : {{ user.shelters|length }} {{ user.shelters|length > 1 ? 'gîtes' : 'gîte' }}</p>
         </p>
     </div>
 </div>

@@ -1,0 +1,39 @@
+{% form_theme formSearch 'tailwind_2_layout.html.twig' %}
+
+<div class="h-28 lg:h-20 fixed top-20 w-full z-30 bg-bgGolorGrayLight flex justify-center items-center">
+
+    <div class="flex btnSearchContainer flex-col lg:flex-row">
+        <a href="{{ previousUrl }}" class="btn btn-primary mb-2 mr-8 lg:mb-0 "><i class="fa-solid fa-rotate-left lg:text-lg mr-2"></i>Retour à mes résultas de recherches</a>
+        <button class="btn btn-secondary btnNewSearch"><i class="fa-solid fa-magnifying-glass lg:text-lg mr-2"></i>Effectuer une nouvelle recherche</button>   
+    </div>
+
+    <div class="hidden w-full flex justify-center items-center formSearchContainer">
+        <div class="hidden xl:inline text-txtGray">
+            <p>Je recherche un gîte</p>
+        </div>
+        
+         {% include "partials/searchbar/_searchbar_responsive_button.html.twig" %}
+
+        <div id="container-search" class="hidden xl:flex justify-center items-center h-full ml-6">
+            {{ form_start(formSearch) }}
+                <div class="flex items-center">
+                    
+                    {% include "partials/searchbar/_searcbar_form.html.twig" %}
+        
+                    <button class="hidden xl:inline font-bold btn btn-primary btn-filter">+ de filtres</button>
+                   
+                    <button type="submit" class="font-bold btn btn-secondary ml-4">Rechercher</button>
+
+                    <div class="absolute top-3 right-6 hidden lg:flex items-center">
+                        <i class="fa-regular fa-circle-xmark cursor-pointer text-2xl text-txtGray mr-1 cancelSearch"></i>
+                        <span class=" text-xs">Annuler</span>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+    {% include "partials/searchbar/_searchbar_filters.html.twig" %}
+
+{{ form_end(formSearch) }}
+
