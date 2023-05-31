@@ -1,29 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SecurityController!{% endblock %}
-
 {% block body %}
 
     <div class="flex flex-wrap flex-col justify-center items-center max-w-screen-2xl mt-36 lg:mt-48 h-full mx-auto mb-10">
         
         <h2 class="text-2xl mb-8 mx-4 text-center text-txtBlueDark font-medium">Bonjour, pour accéder à votre profil, veuillez vous connecter</h2>
         
-        <div class="flex justify-center bg-bgGolorGrayLight py-4 px-8 w-4/5 rounded-2xl  max-w-xl">
+        <div class="flex flex-col bg-bgGolorGrayLight py-4 px-8 w-4/5 rounded-2xl  max-w-xl">
+
             <form action="{{ path('login') }}" method='post' class='flex flex-col w-full'>
-                <label for="email">Votre email : </label>
-                <input type="text" name="_username" id="email" value=" {{ username }}" class="mt-2 mb-4 rounded w-full">
+            
+                <label for="email" class="font-semibold">Votre email : </label>
+                <input type="text" name="_username" id="email" value="{{ username }}" class="mt-2 mb-4 rounded w-full" placeholder="Saisir votre email">
 
-                <label for="password">Votre mot de passe : </label>
-                <input type="password" name="_password" id="password" class="mt-2 mb-4 rounded w-full">
+                <label for="password" class="font-semibold">Votre mot de passe : </label>
+                <input type="password" name="_password" id="password" class="mt-2 mb-4 rounded w-full" placeholder="Saisir votre mot de passe">
 
-                <button class="btn btn-primary">Se connecter</button>
+                <div class="flex items-center flex-col w-full">
+                    <div class="text-center w-full mr-2">
+                        <button class="btn btn-primary w-full">Se connecter</button>
+                    </div>
+                    <small class="mt-2">
+                        <a href="{{ path('signup') }}">Pas encore de <span class="font-semibold hover:text-txtBlueDark">compte</span> ?, créez en un !</a>
+                    </small>
+                </div>
             </form>
 
             {% if error %}
-                <div> {{ error.messageKey }} </div>
+                <div class=" bg-red-400 text-red-900 font-semibold rounded mt-4 py-1 px-2"> {{ error.messageKey |trans(error.messageData, 'security')}} </div>
             {% endif %}
         </div>
-        
     </div>
 
 {% endblock %}

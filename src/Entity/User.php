@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -19,6 +20,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\Email(message: 'Veuillez renseigner un email valide')]
+    #[Assert\NotBlank(message: 'Ce champ ne peut être vide')]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -28,18 +31,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\Length(min: 8, minMessage: "Le mot de passe doit contenir au moins 8 caractères")]
+    #[Assert\NotBlank(message: 'Ce champ ne peut être vide')]
+    #[Assert\Regex(pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', message: 'Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, un chiffre, un caractère spécial.')]
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Ce champ ne peut être vide')]
+    #[Assert\Length(min: 2, minMessage: "Le pénom doit contenir au moins 2 caractères", max: 50, maxMessage: "Le prénom ne doit pas dépasser 50 caractères")]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Ce champ ne peut être vide')]
+    #[Assert\Length(min: 2, minMessage: "Le nom doit contenir au moins 2 caractères", max: 50, maxMessage: "Le nom ne doit pas dépasser 50 caractères")]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Ce champ ne peut être vide')]
+    #[Assert\Length(min: 2, minMessage: "L'adresse doit contenir au moins 2 caractères", max: 50, maxMessage: "L'adresse ne doit pas dépasser 255 caractères")]
     private ?string $address = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank(message: 'Ce champ ne peut être vide')]
+    #[Assert\Length(min: 2, minMessage: "Le numéro de téléphone doit contenir au moins 2 chiffres", max: 50, maxMessage: "Le numéro de téléphone ne doit pas dépasser 20 chiffres")]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255, nullable: true)]

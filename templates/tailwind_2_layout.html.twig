@@ -19,3 +19,13 @@
     {{- parent() -}}
 {%- endblock form_label -%}
 
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+    <ul class="font-semibold bg-red-400 text-red-900 py-1 px-2 rounded">
+        {%- for error in errors -%}
+            <li>{{ error.message }}</li>
+        {%- endfor -%}
+    </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}
+
