@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Shelter;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\ShelterRepository;

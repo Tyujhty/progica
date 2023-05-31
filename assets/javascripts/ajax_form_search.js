@@ -22,7 +22,6 @@ window.onload = () => {
               headers: {
                 "X-Requested-With": "XMLHttpRequest"
               }
-
             });
 
             const data = await response.json();
