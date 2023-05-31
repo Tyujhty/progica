@@ -8,19 +8,16 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
-// start the Stimulus application
-import './bootstrap';
-
 //Import of Tailwind elements
 import 'tw-elements';
 
 // JS import
-import "./javascripts/toggleFilters";
-import "./javascripts/ajaxRequest";
-import "./javascripts/datePickerCalculPrice";
-import "./javascripts/dynamicStyleFilterSelection";
-import "./javascripts/toggleSearchBar";
-import './javascripts/toggleBurgerMenu';
-import './javascripts/toggleAvatarUpdate';
-import './javascripts/toggleEditDescriptionProfile';
-import './javascripts/toggleBtnSearchContainer';
+import "./javascripts/searchbar_toggle_filters";
+import "./javascripts/ajax_form_search";
+import "./javascripts/shelter_update_prices";
+import "./javascripts/searchbar_dynamic_style_filters";
+import "./javascripts/searchbar_toggle_responsive";
+import './javascripts/toggle_burger_menu';
+import './javascripts/profile_toggle_avatar_update';
+import './javascripts/profile_toggle_edit_description';
+import './javascripts/shelter_toggle_search_container';
