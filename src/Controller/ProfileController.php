@@ -2,15 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Shelter;
 use App\Entity\User;
-use App\Form\SearchType;
 use App\Form\UserType;
 use App\Repository\ShelterRepository;
 use App\Service\UploadImageService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -88,5 +87,19 @@ class ProfileController extends AbstractController
                 }
             }
         } 
+    }
+
+    #[Route('/profile/{id}', name: 'profile_user')]
+    // #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    public function userProfile(User $user): Response
+    {
+        $currentUser = $this->getUser();
+
+        if ($currentUser === $user) {
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('profile/_show.html.twig', ['user' => $user, 'currentUser' => $currentUser]);
+
     }
 }

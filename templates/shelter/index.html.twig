@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="w-full lg:w-3/4 mx-auto py-4">
-				<p class="text-xl font-semibold">Chez {{shelter.user.firstname}} {{shelter.user.lastname}}</p>
+				<p class="text-xl font-semibold">Chez <a href="{{path('profile_user', {'id' : shelter.user.id})}}">{{shelter.user.firstname}} {{shelter.user.lastname}}</a></p>
 				
 				<div class="flex text-lg mb-8">
 					<p>{{ shelter.surface}} m²</p>
