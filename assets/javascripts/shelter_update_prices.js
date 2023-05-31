@@ -7,7 +7,7 @@ if (url.pathname.includes("/shelter/")) {
     
         formPickerDateInputs.forEach(input => {
     
-            input.addEventListener('change', () => {
+            input.addEventListener('change', async () => {
     
                 const formDatePicker = new FormData(pickerDateForm );
                 const params = new URLSearchParams();
@@ -15,18 +15,21 @@ if (url.pathname.includes("/shelter/")) {
                 formDatePicker.forEach((value, key) => {
                     params.append(key, value);
                 });
-
-                fetch(url.pathname + '?' + params.toString() + "&ajax=1", {
+                
+                try {
+                  const response = await fetch(url.pathname + '?' + params.toString() + "&ajax=1", {
                     headers: {
                       "X-Requested-With": "XMLHttpRequest"
                     }
-                  })
-                  .then(response => response.json())
-                  .then(data => {
-                    const contentDateSearch = document.querySelector('#contentDateSearch');
+                  });
+
+                  const data = await response.json();
+                  const contentDateSearch = document.querySelector('#contentDateSearch');
                     contentDateSearch.innerHTML = data.content;
-                  })
-                  .catch(e => alert(e));
+
+                } catch (error) {
+                  console.log(error)
+                }
             })
         })
     }
