@@ -8,8 +8,11 @@
     widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
 })}}
 
-<div class="hidden xl:flex xl:items-center">
+<div class="hidden relative xl:flex xl:items-center">
     {% if app.request.attributes.get('_route') == 'home' %}
+        <div class="hidden absolute top-12 right-4 py-1 px-2 rounded bg-red-400 font-semibold text-red-900 error_date_message">
+            <p></i>Veuillez sélectionner une date valide</p>
+        </div>        
         <span class='mr-4'>du </span>
 
         {{ form_row(formSearch.start, {

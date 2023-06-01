@@ -5,10 +5,13 @@
             
             <p class="mb-4"><span class="font-medium text-2xl">{{ shelter.price }}€ </span>par nuit </p>
             
+            <div class="hidden py-1 px-2 rounded bg-red-400 font-semibold text-red-900 error_date_message">
+                <p></i>Veuillez sélectionner une date valide</p>
+            </div>
             <form class="flex" id="pickerDiv" data-shelter-id="{{ shelter.id }}">
                 <div class="flex flex-col">
                     <label for="search[start]"><small>Arrivée</small></label>
-                    <input type="date" id="search_start" name="search[start]" class="rounded-l-lg searchbar-ctn-date datePicker" value="{{ app.session.get('selected_date_start') }}" />
+                    <input type="date" id="search_start" name="search[start]" class="rounded-l-lg searchbar-ctn-date datePicker startDate" value="{{ app.session.get('selected_date_start') }}" />
                 </div>
                 <div class="flex flex-col">
                     <label for="search[end]"><small>Départ</small></label>

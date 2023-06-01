@@ -14,10 +14,12 @@ import 'tw-elements';
 // JS import
 import "./javascripts/searchbar_toggle_filters";
 import "./javascripts/ajax_form_search";
-import "./javascripts/shelter_update_prices";
 import "./javascripts/searchbar_dynamic_style_filters";
 import "./javascripts/searchbar_toggle_responsive";
 import './javascripts/toggle_burger_menu';
 import './javascripts/profile_toggle_avatar_update';
 import './javascripts/profile_toggle_edit_description';
 import './javascripts/shelter_toggle_search_container';
+import './javascripts/searchbar_date_constraints'
+import "./javascripts/shelter_update_prices";
+import './javascripts/validator_date_constraints';
