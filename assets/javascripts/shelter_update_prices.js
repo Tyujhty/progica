@@ -2,14 +2,14 @@ import { validationDateConstraints } from './validator_date_constraints';
 
 const url = new URL(window.location.href);
 
-const pickerDateForm = document.querySelector("#pickerDiv");
-const formPickerDateInputs = document.querySelectorAll(".datePicker");
-const startDateInput = pickerDateForm.querySelector("#search_start");
-const endDateInput = pickerDateForm.querySelector("#search_end");
 
 if (url.pathname.includes("/shelter/")) {
   window.onload = () => {
-  
+    const pickerDateForm = document.querySelector("#pickerDiv");
+    const formPickerDateInputs = document.querySelectorAll(".datePicker");
+    const startDateInput = pickerDateForm.querySelector("#search_start");
+    const endDateInput = pickerDateForm.querySelector("#search_end");
+    
     formPickerDateInputs.forEach(input => {
       input.addEventListener('change', async (event) => {
         

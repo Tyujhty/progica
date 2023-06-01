@@ -44,7 +44,7 @@ class ProfileController extends AbstractController
         
         $formProfile->handleRequest($request);
         
-        if ($formProfile->isSubmitted()&& $formProfile->isValid()) {
+        if ($formProfile->isSubmitted()) {
             
             $avatarFile = $formProfile->get('avatarFile')->getData();
 

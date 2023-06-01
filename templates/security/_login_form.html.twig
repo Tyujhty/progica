@@ -6,6 +6,12 @@
     <label for="password" class="font-semibold">Votre mot de passe : </label>
     <input type="password" name="_password" id="password" class="mt-2 mb-4 rounded w-full" placeholder="Saisir votre mot de passe">
 
+    <label for="" class="mb-4 flex items-center">
+        <input type="checkbox" name="_remember_me" id="" class="mr-2">
+         Se souvenir de moi ?
+    </label>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
     <div class="flex items-center flex-col w-full">
         <div class="text-center w-full mr-2">
             <button class="btn btn-primary w-full">Se connecter</button>

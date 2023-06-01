@@ -1,12 +1,8 @@
-{{ form_row(formSearch.region, {
-    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
-})}}
-{{ form_row(formSearch.department, {
-    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
-})}}
-{{ form_row(formSearch.town, {
-    widget_class: 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
-})}}
+{% for field in [formSearch.region, formSearch.department, formSearch.town] %}
+    {{ form_row(field, {
+        'widget_class': 'rounded-3xl w-auto border-none focus:ring-transparent mr-4 criteria'
+    }) }}
+{% endfor %}
 
 <div class="hidden relative xl:flex xl:items-center">
     {% if app.request.attributes.get('_route') == 'home' %}

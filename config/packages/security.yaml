@@ -15,10 +15,13 @@ security:
             security: false
         main:
             lazy: true
+            remember_me:
+                secret: '%kernel.secret%'
             provider: app_user_provider
             form_login: 
                 login_path: login
                 check_path: login
+                enable_csrf: true
             logout:
                 path: logout
             login_throttling:

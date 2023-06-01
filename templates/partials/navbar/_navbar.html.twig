@@ -8,7 +8,7 @@
         <p class="font-light text-lg">Échappez à la routine, louez un <span class='font-bold text-txtBlueDark'>gîte</span> de rêve !</p>
     </div>
     
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 
         {% include "partials/navbar/_navbar_profile.html.twig" %}
     
