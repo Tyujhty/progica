@@ -26,7 +26,6 @@ class ShelterController extends AbstractController
 
         $formSearch = $this->createForm((SearchType::class));
         $formSearch->handleRequest($request);
-
         
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
             

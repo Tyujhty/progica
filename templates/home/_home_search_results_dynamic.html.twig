@@ -2,8 +2,12 @@
 
     {% if (countShelters is defined) and (countShelters > 0) and (countShelters < totalShelters) %} 
             <div class="w-full h-8 flex items-center pl-4 pb-4 ">
-                <p class='text-lg'>Nous avons trouvé : <strong>{{ countShelters }}</strong> gîte(s) correspondant à vos critères</p>
-            </div>    
+                <p class='text-lg'>Nous avons trouvé : <strong>{{ countShelters }}</strong>{{ countShelters == 1 ? ' gite' : ' gites'}} correspondant à vos critères</p>
+            </div>
+    {% elseif (countShelters is defined) and (countShelters == 0) %}
+            <div class="w-full h-8 flex items-center pl-4 pb-4 ">
+                <p class='text-lg'>Nous avons pas trouvé de gîte correspondant à vos critères, veuillez effectuer une autre recherche</p>
+            </div>
     {% endif %}
 
     <div class="w-full flex flex-wrap">

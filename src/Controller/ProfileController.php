@@ -98,6 +98,5 @@ class ProfileController extends AbstractController
         }
 
         return $this->render('profile/profile_public.html.twig', ['user' => $user, 'currentUser' => $currentUser]);
-
     }
 }
