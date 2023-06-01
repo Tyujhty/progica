@@ -30,7 +30,7 @@ class ProfileController extends AbstractController
         $editFormProfile = $this->createFormBuilder()
         ->add('description', TextareaType::class, [
             'label' => false,
-            'empty_data' => 'Ajouter votre description...',
+            'empty_data' => 'Pensez à ajouter une description, cliquez sur Ajouter',
             'required' => false
         ])
         ->getForm();
