@@ -42,7 +42,7 @@ class ShelterController extends AbstractController
             
             return new JsonResponse([
                 'content' => $this->renderView('shelter/_shelter_dynamic_price_content.html.twig', [
-                    'shelter' => $shelter
+                    'shelter' => $shelter,
                     ])
                 ]);
             }

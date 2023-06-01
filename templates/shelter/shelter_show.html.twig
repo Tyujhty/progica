@@ -17,14 +17,24 @@
 			</div>
 
 			<div class="w-full lg:w-3/4 mx-auto py-4">
-				<p class="text-xl font-semibold">Chez <a href="{{ path('profile_user', {'id' : shelter.user.id}) }}">{{shelter.user.fullname}}</a></p>
-				
-				<div class="flex text-lg mb-8">
-					<p>{{ shelter.surface}} m²</p>
-					<span class="mx-1"> · </span>
-					<p>{{ shelter.nbBedrooms}} {{ shelter.nbBedrooms > 1 ? ' chambres' : ' chambre' }}</p>
-					<span class="mx-1"> · </span>
-					<p>{{ shelter.nbBeds}}{{ shelter.nbBeds > 1 ? 'lits' : 'lit' }}</p>
+
+				<div class="flex mb-4">
+					<div class="h-16 w-16 flex mr-4">
+						<a href="{{ path('profile_user', {'id': shelter.user.id}) }}" class="flex">
+							<img src=" {{ asset(shelter.user.avatar) }} " alt="Avatar de l'utilisateur" class=" w-fit object-cover border-4 border-borderColorLight rounded-full">
+						</a>
+					</div>	
+					<div class="flex flex-col justify-center">
+						<p class="text-xl font-semibold">Chez <a href="{{ path('profile_user', {'id' : shelter.user.id}) }}" class="hover:cursor-pointer hover:text-txtBlueDark hover:opacity-80 transition-all">{{shelter.user.fullname}}</a></p>
+						
+						<div class="flex text-lg">
+							<p>{{ shelter.surface}} m²</p>
+							<span class="mx-1"> · </span>
+							<p>{{ shelter.nbBedrooms}} {{ shelter.nbBedrooms > 1 ? ' chambres' : ' chambre' }}</p>
+							<span class="mx-1"> · </span>
+							<p>{{ shelter.nbBeds}}{{ shelter.nbBeds > 1 ? ' lits' : ' lit' }}</p>
+						</div>
+					</div>			
 				</div>
 
 				{% if shelter.acceptAnimals == 1 %}
