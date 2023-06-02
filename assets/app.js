@@ -23,3 +23,4 @@ import './javascripts/shelter_toggle_search_container';
 import './javascripts/searchbar_date_constraints'
 import "./javascripts/shelter_update_prices";
 import './javascripts/validator_date_constraints';
+import './javascripts/searchbar_toggle_filters_responsive';
