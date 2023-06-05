@@ -11,7 +11,7 @@
 {%- endblock widget_attributes -%}
 
 {%- block checkbox_widget -%}
-    <input type="checkbox" class="criteria hidden" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+    <input type="checkbox" class="criteria hidden checkboxFilter" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
 {%- endblock checkbox_widget -%}
 
 {%- block form_label -%}
