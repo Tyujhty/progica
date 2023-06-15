@@ -16,7 +16,7 @@ checkboxFilters.forEach(checkboxFilter => {
     if(checkboxFilter.checked === true) {
 
         // récupère l'élément après la checkbox
-        const label = checkboxFilter.nextElementSibling;
+        const label = checkboxFilter.previousElementSibling;
         label.classList.add('activeFilter');
     }
 })

@@ -39,8 +39,8 @@ class SecurityController extends AbstractController
                 $user->setAvatar('/users/default-profile.png');
             }
 
-            $em->persist($user);
-            $em->flush();
+            // $em->persist($user);
+            // $em->flush();
 
             return $this->redirectToRoute('login');
         }

@@ -1,21 +1,39 @@
 <div id="filters" class="hidden flex flex-col md:flex-row fixed z-50 top-20 md:top-40 justify-around pt-5 md:pt-0 md:p-8 lg:px-52 lg:pt-3 h-5/6 md:h-48 w-full bg-bgGolorGrayLight shadow-shadowFilters text-txtGray">
-    <div class="flex flex-col items-center pt-4 md:pt-0 h-2/6 md:h-auto w-full md:w-2/6">
-        <h2 class="font-semibold text-txtBlueDark text-lg">Intérieur</h2>
-        {{ form_row(formSearch.interior, {
-            row_class: 'flex justify-center w-full h-4/6 md:h-5/6',
-        }) }}
+    <div class="flex flex-col items-center h-2/6 md:h-auto w-full md:w-2/6">
+        <h2 class="font-semibold text-txtBlueDark text-lg">Extérieur</h2>
+        <div id="search_services" class=" h-4/6 md:h-5/6">
+            {% for equipmentInt in formSearch.interior %}
+                <div class="">
+                    {{ form_label(equipmentInt, equipmentInt.vars.label, {'label_attr': {'class': 'labelFilter w-full block '}}) }}
+                    {{ form_widget(equipmentInt, {'attr': {'class': ''}}) }}
+                </div>
+            {% endfor %}
+            {{ form_errors(formSearch.services) }}
+        </div>
     </div>
     <div class="flex flex-col items-center h-2/6 md:h-auto w-full md:w-2/6">
         <h2 class="font-semibold text-txtBlueDark text-lg">Extérieur</h2>
-        {{ form_row(formSearch.exterior, {
-            row_class: 'flex justify-center w-full h-4/6 md:h-5/6'
-        }) }}
+        <div id="search_services" class=" h-4/6 md:h-5/6">
+            {% for equipmentExt in formSearch.exterior %}
+                <div class="">
+                    {{ form_label(equipmentExt, equipmentExt.vars.label, {'label_attr': {'class': 'labelFilter w-full block '}}) }}
+                    {{ form_widget(equipmentExt, {'attr': {'class': ''}}) }}
+                </div>
+            {% endfor %}
+            {{ form_errors(formSearch.services) }}
+        </div>
     </div>
     <div class="flex flex-col items-center h-2/6 md:h-auto w-full md:w-2/6">
         <h2 class="font-semibold text-txtBlueDark text-lg">Services</h2>
-        {{ form_row(formSearch.services, {
-            row_class: 'flex justify-center w-full h-4/6 md:h-5/6'
-        }) }}
+        <div id="search_services" class=" h-4/6 md:h-5/6">
+            {% for service in formSearch.services %}
+                <div class="">
+                    {{ form_label(service, service.vars.label, {'label_attr': {'class': 'labelFilter w-full block '}}) }}
+                    {{ form_widget(service, {'attr': {'class': ''}}) }}
+                </div>
+            {% endfor %}
+            {{ form_errors(formSearch.services) }}
+        </div>
     </div>
 
     <div class="xl:hidden absolute right-4 top-4">

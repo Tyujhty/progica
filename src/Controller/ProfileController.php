@@ -19,7 +19,7 @@ class ProfileController extends AbstractController
     /** @var User $user */
     
     #[Route('/profile', name: 'profile_current_user')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function profileShow(ShelterRepository $shelterRepository, Request $request, UploadImageService $uploadImageService, EntityManagerInterface $em): Response
     {        
         $currentUser = $this->getUser();
